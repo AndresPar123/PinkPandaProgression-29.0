@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#ff4fa3">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PinkPanda">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon-180.png">
+<title>PinkPandaProgression — Fitness tracker</title>
+<style>
+:root{--bg:#160916;--panel:#241326;--panel2:#321832;--line:#55304f;--text:#fff3fb;--muted:#d0a9c4;--accent:#ff4fa3;--accent2:#ffb6dc;--danger:#ff8797;--surface-glow:#42153b}
+html{min-height:100%;background:var(--bg);overscroll-behavior-y:none}*{box-sizing:border-box}body{margin:0;min-height:100vh;background-color:var(--bg);background-image:radial-gradient(ellipse at top,var(--surface-glow) 0%,var(--bg) 68%);background-repeat:no-repeat;background-attachment:fixed;color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1050px;margin:0 auto;padding:16px 18px 60px}.coinbar{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin: max(env(safe-area-inset-top, 0px), 2px) 0 12px;padding:10px 13px;background:linear-gradient(110deg,#49203f,#28142d);border:1px solid #85436d;border-radius:15px;position:sticky;top:calc(env(safe-area-inset-top, 0px) + 4px);z-index:20;box-shadow:0 6px 18px #09040966}.brand-mini{font-weight:850;color:#ffb6dc;font-size:13px}.coin-count{display:flex;align-items:center;gap:7px;background:#170d1a;border:1px solid #a85c88;padding:6px 10px;border-radius:999px;font-weight:850;white-space:nowrap}.exercise-total{display:flex;align-items:center;gap:7px;background:#170d1a;border:1px solid #674062;padding:6px 10px;border-radius:999px;font-weight:850;white-space:nowrap}.exercise-total-icon{font-size:18px}.settings-button{display:grid;place-items:center;min-width:44px;width:44px;height:44px;padding:0;background:#170d1a;border:1px solid #674062;border-radius:50%;font-size:21px;flex-shrink:0;touch-action:manipulation;position:relative;z-index:2}.settings-button:hover{transform:rotate(25deg);border-color:var(--accent)}.settings-intro{color:var(--muted);font-size:13px;margin:-5px 0 16px}.theme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.theme-option{display:flex;align-items:center;gap:10px;text-align:left;padding:11px;background:#1c101e;border:1px solid #55304f;border-radius:13px;color:var(--text);min-width:0}.theme-option.selected{border:2px solid var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 20%,transparent)}.theme-swatch{width:38px;height:38px;border-radius:11px;flex-shrink:0;border:2px solid #ffffff55}.theme-option small{display:block;color:var(--muted);font-size:11px;font-weight:500}.settings-feature{margin-top:14px;padding:14px;border:1px solid #67405f;border-radius:15px;background:linear-gradient(145deg,#2c172d,#1b101f)}.settings-feature h3{margin:0 0 5px;font-size:14px;color:var(--accent2)}.settings-feature p{font-size:12px;color:var(--muted);margin:0 0 10px}.settings-actions{display:flex;gap:8px;flex-wrap:wrap}.settings-actions button{flex:1}@media(max-width:420px){.theme-grid{grid-template-columns:1fr}.coinbar{gap:6px;padding:8px}.exercise-total,.coin-count{padding:6px 8px;font-size:12px}}.day-slideshow{margin-top:15px;background:linear-gradient(145deg,#2c172d,#1b101f);border:1px solid #67405f;border-radius:16px;overflow:hidden}.day-slideshow .day-photo{display:block;width:100%;max-height:440px;object-fit:contain;background:#180d1b}.slideshow-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;background:#241326}.slideshow-controls button{flex-shrink:0}.slide-position{font-size:12px;color:var(--muted);text-align:center;font-weight:750}.day-photo-info{padding:12px}.day-photo-info h3{font-size:14px;margin:0 0 6px;color:#ffb5dc}.day-photo-info p{margin:6px 0;color:var(--muted);font-size:13px}.coin{display:inline-grid;place-items:center;width:23px;height:23px;border-radius:50%;background:linear-gradient(135deg,#fff5b8 0%,#ffd34d 45%,#d99513 100%);color:#773a00;border:2px solid #ffe7a0;font-size:14px;line-height:1;box-shadow:0 0 12px #ffcb3c55}.calendar-prompt{display:flex;align-items:center;gap:14px;margin:0 0 20px;padding:12px;background:linear-gradient(110deg,#4a1c43,#2b172f);border:1px solid #85436d;border-radius:16px}.calendar-prompt img{width:150px;height:150px;object-fit:contain;flex-shrink:0;border-radius:14px}.calendar-prompt-content{flex:1;min-width:0}.calendar-speech{position:relative;display:inline-block;background:#fff0f9;color:#461438;padding:12px 14px;border-radius:14px;font-weight:800;margin-bottom:9px}.calendar-speech:before{content:"";position:absolute;left:-6px;top:18px;width:12px;height:12px;background:#fff0f9;transform:rotate(45deg)}.calendar-prompt label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}.calendar-prompt input{width:100%}@media(max-width:440px){.calendar-prompt{gap:9px;padding:9px}.calendar-prompt img{width:112px;height:112px}.calendar-speech{padding:10px;font-size:13px}}.calendar-save-top{margin:-8px 0 18px}.calendar-save-top button{width:100%}.calendar-panel{padding:16px}.calendar-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.calendar-weekday{text-align:center;font-size:11px;color:var(--muted);padding:5px 0}.calendar-day{min-height:72px;padding:6px 3px;background:#211321;border:1px solid #55304f;border-radius:9px;color:var(--text);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}.calendar-day.empty{visibility:hidden}.calendar-day.today{border-color:var(--accent2)}.calendar-day.trained{background:color-mix(in srgb,var(--accent) 22%,#211321);border-color:var(--accent)}.calendar-day .day-number{font-weight:850}.calendar-day .day-training{font-size:10px;line-height:1.15;overflow-wrap:anywhere;text-align:center;color:var(--accent2)}.calendar-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.calendar-form .wide{grid-column:1/-1}.calendar-entry{padding:12px;margin-top:8px;background:#211321;border:1px solid #55304f;border-radius:11px}.calendar-entry button{margin:6px 5px 0 0}.motivator-banner{cursor:pointer}.motivator-banner:focus-visible{outline:2px solid var(--accent);outline-offset:3px}@media(max-width:440px){.calendar-grid{gap:3px}.calendar-day{min-height:65px;padding:5px 1px;font-size:11px}.calendar-day .day-training{font-size:9px}.calendar-form{grid-template-columns:1fr}}.tabs{display:flex;gap:7px;overflow-x:auto;padding:0 0 14px;margin-bottom:2px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab-btn{flex:1;min-width:max-content;background:#28162b;color:#d0a9c4;border:1px solid #52314f;padding:10px 12px;border-radius:12px;font-size:13px}.tab-btn.active{background:linear-gradient(110deg,#ff4fa3,#ff83c2);color:#3b102a;border-color:#ff9bd0}.view{display:none}.view.active{display:block}.home-hero{display:grid;grid-template-columns: minmax(0,1fr) minmax(140px,220px);align-items:center;gap:16px;overflow:hidden;background:radial-gradient(ellipse at top right,#692052,#251226 68%);border:1px solid #85436d;border-radius:22px;padding:20px;margin-bottom:15px}.home-hero h1{font-size:clamp(23px,4vw,34px);line-height:1.1;margin:0 0 10px;color:#ffb6dc}.home-hero p{color:#f4cce3;margin:0 0 14px}.hero-panda{display:grid;place-items:center;min-height:150px;border-radius:22px;background:radial-gradient(circle,#ff72ba44,transparent 70%);font-size:clamp(76px,15vw,125px);filter:drop-shadow(0 8px 14px #ff4fa344)}.speech-home{padding:12px 14px;background:#fff0f9;color:#461438;border-radius:15px;font-weight:750;display:inline-block}.home-stats,.character-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.home-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.home-actions button{flex:1}.section-title{font-size:17px;margin:18px 0 10px}.panda-card{position:relative;background:linear-gradient(145deg,#321a34,#1b101f);border:1px solid #67405f;border-radius:17px;padding:14px;min-width:0}.panda-card.owned{border-color:#ff75bb}.panda-face{position:relative;display:grid;place-items:center;width:100%;max-width:150px;aspect-ratio:1/1;border-radius:16px;background:radial-gradient(circle at 30% 20%,#ffabd7,#69244f);font-size:43px;margin:0 auto 10px;overflow:hidden;box-shadow:inset 0 0 0 2px #ff9bd0}.panda-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:43px;background:radial-gradient(circle at 30% 20%,#ffabd7,#69244f)}.panda-placeholder small{font-size:23px}.panda-face img{position:relative;width:100%;height:100%;object-fit:contain;display:block}.panda-face img{cursor:zoom-in}.character-preview{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(8,3,10,.9)}.character-preview.open{display:flex}.character-preview img{display:block;max-width:min(88vw,560px);max-height:82vh;object-fit:contain;border-radius:18px;filter:drop-shadow(0 8px 28px #0009)}.character-preview-close{position:absolute;top:calc(env(safe-area-inset-top, 0px) + 60px);right:16px;background:#2b172c;color:#fff;border:1px solid #8d5480;padding:10px 14px;border-radius:10px}.panda-face.panda-large{width:100px;max-width:100px;flex-shrink:0}.motivator-banner{margin-bottom:14px}.motivator-banner img{object-fit:cover}.panda-card h3{font-size:14px;text-align:center;margin:0 0 4px}.panda-card p{font-size:11px;color:var(--muted);text-align:center;min-height:31px;margin:0 0 9px}.panda-price{text-align:center;font-weight:850;margin:7px 0 10px}.panda-card button{width:100%}.owned-tag{font-size:10px;color:#ffb6dc;text-align:center;font-weight:800;margin:4px 0 9px}.shop-intro{color:var(--muted);font-size:13px;margin:-4px 0 14px}.progress-mini{height:7px;background:#180d1b;border-radius:99px;overflow:hidden;margin-top:9px}.progress-mini span{display:block;height:100%;background:linear-gradient(90deg,#ff4fa3,#ffd0e9);border-radius:99px}.empty-card{padding:18px;border:1px dashed #67405f;border-radius:15px;color:var(--muted);text-align:center}.history-day{margin-bottom:12px}.history-day h3{font-size:14px;margin:0 0 7px;color:#ffb6dc}.history-all-item{background:#29172b;border:1px solid #432645;border-radius:12px;padding:11px;margin-top:7px}.history-all-item strong{font-size:13px}.history-all-item small{display:block;color:var(--muted);margin-top:4px}@media(max-width:560px){main{padding:10px 11px 42px}.home-hero{grid-template-columns:minmax(0,1fr) 105px;padding:15px;gap:6px}.hero-panda{font-size:76px;min-height:100px}.home-stats,.character-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.brand-mini{font-size:12px}.tab-btn{padding:9px 10px}.panda-face{max-width:120px}}.layout{display:grid;grid-template-columns:310px minmax(0,1fr);gap:18px}.layout.detail-mode{grid-template-columns:minmax(0,1fr)}.layout.detail-mode>aside{display:none}.layout.detail-mode>section{width:100%}.back-button{display:inline-flex;align-items:center;gap:7px;margin:0 0 15px;padding:9px 12px}.detail-heading{display:flex;align-items:center;gap:10px;margin-bottom:12px}.detail-heading .back-button{flex-shrink:0;margin:0}.detail-heading .eyebrow{margin-bottom:2px}
+.panel{background:linear-gradient(150deg,#2c172d,#201121);border:1px solid var(--line);border-radius:20px;padding:18px;min-width:0;box-shadow:0 10px 35px #09040955}.panel h2{font-size:16px;margin:0 0 14px}
+label{display:block;color:var(--muted);font-size:12px;margin:12px 0 6px}
+input,select,textarea,button{font:inherit}input,select,textarea{width:100%;background:#180d1b;color:var(--text);border:1px solid #623452;border-radius:12px;padding:11px 12px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px #ff4fa322}textarea{resize:vertical;min-height:92px;line-height:1.5}input::placeholder,textarea::placeholder{color:#9d7893}
+button:disabled{opacity:.58;cursor:default;filter:saturate(.65)}button{cursor:pointer;border:0;border-radius:12px;padding:10px 13px;font-weight:750;transition:transform .15s,filter .15s}button:active{transform:scale(.98)}.primary{background:linear-gradient(110deg,#ff4fa3,#ff83c2);color:#3b102a;box-shadow:0 5px 15px #ff4fa333}.secondary{background:#3a203b;color:var(--text);border:1px solid #674062}.small{padding:7px 10px;font-size:12px}.full{width:100%;margin-top:12px}
+.search{margin-bottom:12px}.exercise-list{display:flex;flex-direction:column;gap:7px;max-height:390px;overflow:auto}
+.exercise{display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;width:100%;background:#29172b;color:var(--text);border:1px solid #432645;padding:11px;border-radius:13px;font-weight:650}
+.exercise:hover,.exercise.active{background:#482044;border-color:#ff63ae}.exercise.active{box-shadow:inset 3px 0 var(--accent),0 0 16px #ff4fa315}.exercise small{display:block;color:var(--muted);font-weight:400;font-size:11px}.empty{color:var(--muted);padding:16px 4px;font-size:13px}
+.topline{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.eyebrow{color:#ff80c0;text-transform:uppercase;font-size:10px;letter-spacing:1.5px;font-weight:850}.selected-title{font-size:25px;margin:3px 0 4px}.muted{color:var(--muted)}.previous{background:linear-gradient(120deg,#45203f,#2c1a32);border:1px solid #81466e;border-radius:15px;padding:13px 14px;margin:16px 0}.previous strong{color:#ffacd6}.previous p{margin:4px 0 0;font-size:13px}
+.table-head,.set-row{display:grid;grid-template-columns:54px minmax(70px,1fr) minmax(70px,1fr) 36px;gap:8px;align-items:center}.table-head{color:var(--muted);font-size:11px;padding:0 4px 7px}.set-row{padding:7px 0;border-top:1px solid var(--line)}.set-num{font-weight:750;color:#ff91c8;padding-left:5px}.set-row input{padding:10px 8px;text-align:center}.remove{background:transparent;color:var(--muted);padding:6px;font-size:18px}.remove:hover{color:var(--danger)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.actions button{flex:1}.savebar{display:flex;gap:10px;align-items:center;margin-top:16px}.savebar button{flex:1}.savebar .subtle-edit-button{flex:0 1 auto;padding:6px 9px;min-height:30px;font-size:11px;opacity:.72;border-color:#493047;background:#241626;color:#d0a9c4}.savebar .subtle-edit-button:hover{opacity:1}.notice{font-size:12px;color:var(--muted);margin-top:10px}
+.rest-timer{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:10px 0 9px;padding:7px 9px;background:#211321;border:1px solid #55304f;border-radius:11px;font-size:12px}.rest-timer .timer-label{color:#d0a9c4;font-weight:700;white-space:nowrap}.rest-timer select{min-width:0;max-width:110px;background:#170d1a;color:#fff3fb;border:1px solid #67405f;border-radius:7px;padding:5px;font-size:12px}.rest-time{font-variant-numeric:tabular-nums;font-weight:850;font-size:14px;color:#ffb6dc;min-width:42px;text-align:center}.rest-timer button{padding:5px 8px;border-radius:7px;font-size:11px;min-height:28px}.rest-timer .timer-start{background:linear-gradient(110deg,#ff4fa3,#ff83c2);color:#3b102a;border:0;font-weight:800}.rest-timer .timer-reset{background:#28162b;color:#d0a9c4;border:1px solid #52314f}
+.progress-section{margin:28px 0 0;padding-top:18px;border-top:1px solid var(--line)}.progress-section h3{font-size:15px;margin:0 0 10px;color:#ffb5dc}.chart-grid{display:grid;grid-template-columns:1fr;gap:12px}.chart-card{background:linear-gradient(145deg,#2c172d,#1b101f);border:1px solid #67405f;border-radius:16px;padding:14px;min-width:0}.chart-title{font-size:13px;font-weight:800;margin-bottom:2px}.chart-subtitle{font-size:11px;color:var(--muted);margin-bottom:8px}.chart-svg{display:block;width:100%;height:auto;overflow:visible}.chart-empty{padding:20px 10px;text-align:center;color:var(--muted);font-size:12px;background:#1c101e;border-radius:12px}.chart-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:5px}.chart-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff4fa3;margin-right:5px}.history{margin-top:18px}.history h3{font-size:14px;margin:0 0 10px}.history-item{border-top:1px solid var(--line);padding:11px 0}.history-item:first-of-type{border-top:0}.history-date{display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:700}.history-detail{color:var(--muted);font-size:12px;margin-top:5px}.tag{display:inline-block;color:#ffc4e3;background:#512546;padding:3px 7px;border-radius:7px;font-size:11px;margin-left:5px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}.stat{background:linear-gradient(135deg,#3a203c,#29172f);border:1px solid #4d2d4d;border-radius:13px;padding:11px}.stat span{display:block;color:var(--muted);font-size:11px}.stat strong{display:block;font-size:19px;margin-top:3px}
+hr{border:0;border-top:1px solid var(--line);margin:18px 0}.toast{color:#ffabd5;font-size:13px;min-height:18px}
+.mascot-card{display:flex;align-items:center;gap:12px;margin:0 0 18px;padding:13px;background:linear-gradient(110deg,#4a1c43,#2b172f);border:1px solid #85436d;border-radius:17px;box-shadow:0 8px 22px #ff4fa318}.mascot-card img{width:96px;height:96px;object-fit:contain;border-radius:18px;border:2px solid #ff82c2;flex-shrink:0}.mascot-card img[hidden]{display:none}.speech{position:relative;background:#fff0f9;color:#461438;padding:11px 13px;border-radius:14px;font-weight:700;font-size:13px}.speech:before{content:"";position:absolute;left:-7px;top:23px;width:14px;height:14px;background:#fff0f9;transform:rotate(45deg)}.speech small{display:block;color:#a13778;font-weight:600;margin-top:4px}
+.note-card{margin-top:18px;padding:14px;background:linear-gradient(140deg,#3a1c37,#28162e);border:1px solid #744166;border-radius:16px}.note-title{display:flex;align-items:center;gap:8px;font-weight:800;color:#ffb5dc;margin-bottom:4px}.note-card p{font-size:12px;color:var(--muted);margin:0 0 8px}.note-status{min-height:17px;font-size:11px;color:#ffadd7;margin-top:5px}.photo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}.progress-photo-card{overflow:hidden;background:linear-gradient(145deg,#2c172d,#1b101f);border:1px solid #67405f;border-radius:16px}.progress-photo-card img{display:block;width:100%;max-height:360px;object-fit:contain;background:#180d1b}.progress-photo-info{padding:12px}.progress-photo-info h3{font-size:14px;margin:0 0 6px;color:#ffb5dc}.progress-photo-info p{font-size:12px;color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere;margin:6px 0}.photo-meta{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;font-weight:750}.photo-form{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.photo-form .wide{grid-column:1/-1}.photo-preview{display:none;width:100%;max-height:260px;object-fit:contain;background:#180d1b;border:1px solid #67405f;border-radius:12px;margin-top:10px}.photo-actions{display:flex;justify-content:flex-end;margin-top:8px}.zoomable-progress-photo{cursor:zoom-in}.zoomable-progress-photo:focus{outline:2px solid var(--accent);outline-offset:2px}.photo-lightbox{position:fixed;inset:0;z-index:9999;background:rgba(8,3,10,.92);display:none;align-items:center;justify-content:center;padding:20px}.photo-lightbox.open{display:flex}.photo-lightbox img{max-width:96vw;max-height:88vh;object-fit:contain;border-radius:12px;box-shadow:0 8px 36px #0009}.photo-lightbox-close{position:absolute;top:calc(env(safe-area-inset-top, 0px) + 58px);right:14px;border:1px solid #8d5480;background:#2b172c;color:#fff;padding:9px 13px;border-radius:10px;font-size:14px}@media(max-width:520px){.photo-form{grid-template-columns:1fr}.photo-form .wide{grid-column:auto}}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.exercise-list{max-height:220px}.selected-title{font-size:22px}.panel{padding:15px}.stats{grid-template-columns:repeat(3,1fr)}.mascot-card{gap:10px}.mascot-card img{width:82px;height:82px}.speech{font-size:12px}}
+@media(max-width:390px){.table-head,.set-row{grid-template-columns:38px minmax(60px,1fr) minmax(60px,1fr) 30px;gap:5px}.stat strong{font-size:16px}.mascot-card img{width:72px;height:72px}}
+
+/* Theme colors intentionally flow through the whole interface */
+body[data-theme] .panel,
+body[data-theme] .day-slideshow,
+body[data-theme] .settings-feature,
+body[data-theme] .note-card,
+body[data-theme] .stat,
+body[data-theme] .exercise-card,
+body[data-theme] .panda-card,
+body[data-theme] .photo-card,
+body[data-theme] .history-card,
+body[data-theme] .form-card,
+body[data-theme] .chart-card,
+body[data-theme] .mascot-card {background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 22%,var(--bg)),color-mix(in srgb,var(--bg) 88%,#000));border-color:color-mix(in srgb,var(--accent) 48%,var(--line))}
+body[data-theme] .coinbar {background:linear-gradient(110deg,color-mix(in srgb,var(--accent) 28%,var(--bg)),color-mix(in srgb,var(--bg) 80%,#000));border-color:color-mix(in srgb,var(--accent) 60%,var(--line))}
+body[data-theme] .home-hero {background:radial-gradient(ellipse at top right,color-mix(in srgb,var(--accent) 55%,var(--bg)),var(--bg) 78%);border-color:color-mix(in srgb,var(--accent) 58%,var(--line))}
+body[data-theme] .tab-btn {background:color-mix(in srgb,var(--accent) 13%,var(--bg));color:var(--muted);border-color:var(--line)}
+body[data-theme] .tab-btn.active,
+body[data-theme] .primary,
+body[data-theme] button.primary {background:linear-gradient(110deg,var(--accent),color-mix(in srgb,var(--accent) 60%,var(--accent2)));color:color-mix(in srgb,var(--bg) 25%,#080808);border-color:var(--accent)}
+body[data-theme] .coin-count,
+body[data-theme] .exercise-total,
+body[data-theme] .settings-button,
+body[data-theme] .theme-option {background:color-mix(in srgb,var(--accent) 12%,var(--bg));border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+body[data-theme] .selected-title,
+body[data-theme] .home-hero h1,
+body[data-theme] .section-title,
+body[data-theme] .day-photo-info h3,
+body[data-theme] .eyebrow,
+body[data-theme] .settings-feature h3 {color:var(--accent2)}
+body[data-theme] .theme-option.selected {border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+body[data-theme] input:focus,
+body[data-theme] select:focus,
+body[data-theme] textarea:focus {border-color:var(--accent);outline-color:var(--accent)}
+body[data-theme] .slideshow-controls {background:color-mix(in srgb,var(--accent) 18%,var(--bg))}
+.theme-price {display:block;margin-top:4px;font-size:12px;font-weight:800;color:var(--accent2)}
+.theme-option.locked {opacity:.92}
+.theme-option.locked .theme-swatch {filter:saturate(.8)}
+
+
+.coin-icon{display:inline-flex;align-items:center;justify-content:center;width:1.28em;height:1.28em;vertical-align:-.22em;flex:0 0 auto;line-height:1}
+.coin-icon svg{display:block;width:100%;height:100%;filter:drop-shadow(0 1px 1px #0005)}
+.coin-icon .coin-rim{fill:url(#pandaCoinGold);stroke:#9b6500;stroke-width:1.4}
+.coin-icon .coin-inner{fill:#8c5700;stroke:#fff0a6;stroke-width:1.2}
+.coin-icon .panda-mark{fill:#ffd34f;stroke:#ffd34f;stroke-width:.5}
+.coin-icon .panda-eye{fill:#6b4000}
+
+
+input[type="date"]{width:min(100%,230px);max-width:100%;min-width:0;display:block;padding:8px 9px;font-size:14px;}
+/* Monochrome themes: no pink accents, with readable contrast. */
+body[data-theme="black"]{color:#fff;background-color:#050505;background-image:radial-gradient(ellipse at top,#242424 0%,#050505 68%)}
+body[data-theme="black"] .panel,body[data-theme="black"] .chart-card,body[data-theme="black"] .panda-card,body[data-theme="black"] .note-card,body[data-theme="black"] .day-slideshow,body[data-theme="black"] .settings-feature,body[data-theme="black"] .history-all-item,body[data-theme="black"] .calendar-entry{background:#111!important;border-color:#555!important;color:#fff!important}
+body[data-theme="black"] .home-hero,body[data-theme="black"] .coinbar,body[data-theme="black"] .calendar-prompt,body[data-theme="black"] .motivator-banner,body[data-theme="black"] .slideshow-controls{background:#181818!important;border-color:#555!important}
+body[data-theme="black"] .tab-btn,body[data-theme="black"] .theme-option,body[data-theme="black"] button.secondary,body[data-theme="black"] input,body[data-theme="black"] textarea,body[data-theme="black"] select,body[data-theme="black"] .calendar-day{background:#202020!important;color:#fff!important;border-color:#666!important}
+body[data-theme="black"] .tab-btn.active,body[data-theme="black"] button.primary{background:#eee!important;color:#111!important;border-color:#fff!important}
+body[data-theme="black"] .home-hero h1,body[data-theme="black"] .home-hero p,body[data-theme="black"] .section-title,body[data-theme="black"] .history-day h3,body[data-theme="black"] .day-photo-info h3,body[data-theme="black"] .progress-section h3,body[data-theme="black"] .settings-feature h3,body[data-theme="black"] .owned-tag,body[data-theme="black"] .brand-mini,body[data-theme="black"] .panda-card.owned{color:#fff!important;border-color:#aaa!important}
+body[data-theme="black"] .speech-home,body[data-theme="black"] .calendar-speech{background:#eee!important;color:#111!important}
+body[data-theme="white"]{color:#171717;background-color:#e7e7e7;background-image:radial-gradient(ellipse at top,#d5d5d5 0%,#e7e7e7 68%)}
+body[data-theme="white"] .panel,body[data-theme="white"] .chart-card,body[data-theme="white"] .panda-card,body[data-theme="white"] .note-card,body[data-theme="white"] .day-slideshow,body[data-theme="white"] .settings-feature,body[data-theme="white"] .history-all-item,body[data-theme="white"] .calendar-entry,body[data-theme="white"] .stat,body[data-theme="white"] .exercise-card,body[data-theme="white"] .photo-card,body[data-theme="white"] .form-card,body[data-theme="white"] .mascot-card{background:#f2f2f2!important;border-color:#b0b0b0!important;color:#171717!important}
+body[data-theme="white"] .home-hero,body[data-theme="white"] .coinbar,body[data-theme="white"] .calendar-prompt,body[data-theme="white"] .motivator-banner,body[data-theme="white"] .slideshow-controls{background:#dedede!important;border-color:#a8a8a8!important;color:#171717!important}
+body[data-theme="white"] .tab-btn,body[data-theme="white"] .theme-option,body[data-theme="white"] button.secondary,body[data-theme="white"] input,body[data-theme="white"] textarea,body[data-theme="white"] select,body[data-theme="white"] .calendar-day,body[data-theme="white"] .coin-count,body[data-theme="white"] .exercise-total,body[data-theme="white"] .settings-button{background:#f1f1f1!important;color:#171717!important;border-color:#aaa!important}
+body[data-theme="white"] .tab-btn.active,body[data-theme="white"] button.primary{background:#222!important;color:#fff!important;border-color:#111!important}
+body[data-theme="white"] .home-hero h1,body[data-theme="white"] .home-hero p,body[data-theme="white"] .section-title,body[data-theme="white"] .history-day h3,body[data-theme="white"] .day-photo-info h3,body[data-theme="white"] .progress-section h3,body[data-theme="white"] .settings-feature h3,body[data-theme="white"] .owned-tag,body[data-theme="white"] .brand-mini,body[data-theme="white"] .selected-title,body[data-theme="white"] .eyebrow,body[data-theme="white"] .calendar-day .day-training,body[data-theme="white"] .panda-card p,body[data-theme="white"] .settings-feature p{color:#222!important}
+body[data-theme="white"] .speech-home,body[data-theme="white"] .calendar-speech{background:#333!important;color:#fff!important}
+.chart-point{cursor:pointer;touch-action:manipulation;outline:none}.chart-point:focus{stroke-width:3;filter:drop-shadow(0 0 2px currentColor)}
+
+/* Strict monochrome override: suppress all interface pink accents in black/white themes. */
+body[data-theme="black"],body[data-theme="white"]{--accent:#222222;--accent2:#eeeeee;--danger:#777777;--line:#777777;--muted: #666666}
+body[data-theme="black"]{--accent:#eeeeee;--accent2:#ffffff;--muted:#c8c8c8}
+body[data-theme="black"] .theme-option.selected,body[data-theme="white"] .theme-option.selected,
+body[data-theme="black"] .panda-card.owned,body[data-theme="white"] .panda-card.owned,
+body[data-theme="black"] .tab-btn.active,body[data-theme="white"] .tab-btn.active,
+body[data-theme="black"] .calendar-day.today,body[data-theme="white"] .calendar-day.today,
+body[data-theme="black"] .calendar-day.trained,body[data-theme="white"] .calendar-day.trained,
+body[data-theme="black"] input:focus,body[data-theme="white"] input:focus,
+body[data-theme="black"] select:focus,body[data-theme="white"] select:focus,
+body[data-theme="black"] textarea:focus,body[data-theme="white"] textarea:focus{border-color:currentColor!important;outline-color:currentColor!important;box-shadow:none!important}
+body[data-theme="black"] .selected-title,body[data-theme="black"] .eyebrow,body[data-theme="black"] .section-title,body[data-theme="black"] .day-photo-info h3,body[data-theme="black"] .calendar-day .day-training,body[data-theme="black"] .theme-price,body[data-theme="black"] .settings-feature h3,
+body[data-theme="white"] .selected-title,body[data-theme="white"] .eyebrow,body[data-theme="white"] .section-title,body[data-theme="white"] .day-photo-info h3,body[data-theme="white"] .calendar-day .day-training,body[data-theme="white"] .theme-price,body[data-theme="white"] .settings-feature h3{color:inherit!important}
+body[data-theme="black"] .tab-btn,body[data-theme="white"] .tab-btn{color:inherit!important}
+body[data-theme="black"] .calendar-day.trained{background:#303030!important}
+body[data-theme="white"] .calendar-day.trained{background:#d6d6d6!important}
+body[data-theme="black"] .calendar-day.today,body[data-theme="white"] .calendar-day.today{box-shadow:inset 0 0 0 1px currentColor!important}
+body[data-theme="black"] .panda-face,body[data-theme="black"] .panda-placeholder,body[data-theme="white"] .panda-face,body[data-theme="white"] .panda-placeholder{background:#777!important;box-shadow:inset 0 0 0 2px #555!important}
+body[data-theme="black"] .hero-panda{background:radial-gradient(circle,#555,transparent 70%)!important;filter:grayscale(1)!important}
+body[data-theme="white"] .hero-panda{background:radial-gradient(circle,#ccc,transparent 70%)!important;filter:grayscale(1)!important}
+body[data-theme="black"] .coinbar,body[data-theme="white"] .coinbar{box-shadow:0 6px 18px #0003!important}
+
+
+/* Laat de lege oefeningskolom weg zolang er geen oefening geopend is. */
+.layout:not(.detail-mode) > section.panel{display:none}
+/* Volledig neutrale zwart-wit-thema's: ook hardgecodeerde roze/paarse accenten vervangen. */
+body[data-theme="black"] .mascot-card,
+body[data-theme="black"] .speech,
+body[data-theme="black"] .previous,
+body[data-theme="black"] .rest-timer,
+body[data-theme="black"] .note-status,
+body[data-theme="black"] .notice,
+body[data-theme="black"] .toast,
+body[data-theme="black"] .empty-card,
+body[data-theme="black"] .history-item,
+body[data-theme="black"] .tag,
+body[data-theme="black"] .stat,
+body[data-theme="black"] .progress-mini,
+body[data-theme="black"] .exercise,
+body[data-theme="black"] .search,
+body[data-theme="black"] .set-row,
+body[data-theme="black"] .table-head,
+body[data-theme="black"] .chart-empty,
+body[data-theme="black"] .chart-subtitle,
+body[data-theme="black"] .chart-title,
+body[data-theme="black"] .progress-section,
+body[data-theme="black"] .calendar-speech,
+body[data-theme="black"] .calendar-entry,
+body[data-theme="white"] .mascot-card,
+body[data-theme="white"] .speech,
+body[data-theme="white"] .previous,
+body[data-theme="white"] .rest-timer,
+body[data-theme="white"] .note-status,
+body[data-theme="white"] .notice,
+body[data-theme="white"] .toast,
+body[data-theme="white"] .empty-card,
+body[data-theme="white"] .history-item,
+body[data-theme="white"] .tag,
+body[data-theme="white"] .stat,
+body[data-theme="white"] .progress-mini,
+body[data-theme="white"] .exercise,
+body[data-theme="white"] .search,
+body[data-theme="white"] .set-row,
+body[data-theme="white"] .table-head,
+body[data-theme="white"] .chart-empty,
+body[data-theme="white"] .chart-subtitle,
+body[data-theme="white"] .chart-title,
+body[data-theme="white"] .progress-section,
+body[data-theme="white"] .calendar-speech,
+body[data-theme="white"] .calendar-entry{background:#202020!important;color:#fff!important;border-color:#666!important;box-shadow:none!important}
+body[data-theme="white"] .mascot-card,
+body[data-theme="white"] .speech,
+body[data-theme="white"] .previous,
+body[data-theme="white"] .rest-timer,
+body[data-theme="white"] .note-status,
+body[data-theme="white"] .notice,
+body[data-theme="white"] .toast,
+body[data-theme="white"] .empty-card,
+body[data-theme="white"] .history-item,
+body[data-theme="white"] .tag,
+body[data-theme="white"] .stat,
+body[data-theme="white"] .progress-mini,
+body[data-theme="white"] .exercise,
+body[data-theme="white"] .search,
+body[data-theme="white"] .set-row,
+body[data-theme="white"] .table-head,
+body[data-theme="white"] .chart-empty,
+body[data-theme="white"] .chart-subtitle,
+body[data-theme="white"] .chart-title,
+body[data-theme="white"] .progress-section,
+body[data-theme="white"] .calendar-speech,
+body[data-theme="white"] .calendar-entry{background:#f1f1f1!important;color:#171717!important;border-color:#aaa!important;box-shadow:none!important}
+body[data-theme="black"] .muted,body[data-theme="black"] .eyebrow,body[data-theme="black"] .note-title,body[data-theme="black"] .timer-label,body[data-theme="black"] .history h3,body[data-theme="black"] .history-date,body[data-theme="black"] .history-detail,body[data-theme="black"] .stat span,
+body[data-theme="white"] .muted,body[data-theme="white"] .eyebrow,body[data-theme="white"] .note-title,body[data-theme="white"] .timer-label,body[data-theme="white"] .history h3,body[data-theme="white"] .history-date,body[data-theme="white"] .history-detail,body[data-theme="white"] .stat span{color:inherit!important}
+body[data-theme="black"] .progress-mini span,body[data-theme="white"] .progress-mini span{background:#888!important}
+body[data-theme="black"] .mascot-card img,body[data-theme="white"] .mascot-card img{border-color:#777!important}
+body[data-theme="black"] .speech small,body[data-theme="white"] .speech small{color:inherit!important}
+body[data-theme="black"] button,body[data-theme="white"] button{accent-color:currentColor}
+body[data-theme="black"] .remove,body[data-theme="white"] .remove{background:#333!important;color:inherit!important;border-color:#777!important}
+
+</style>
+</head>
+<body>
+<div class="photo-lightbox" id="photoLightbox" role="dialog" aria-modal="true" aria-label="Vergrote progressiefoto"><button class="photo-lightbox-close" id="closePhotoLightbox" type="button">✕ Sluiten</button><img id="photoLightboxImage" alt="Vergrote progressiefoto"></div>
+<main>
+<div class="coinbar"><button class="settings-button" id="openSettings" aria-label="Instellingen en kleuren" title="Instellingen">⚙️</button><div class="exercise-total" title="Totaal opgeslagen oefeningstrainingen"><span class="exercise-total-icon">💪</span><span id="exerciseTotal">0</span> oefeningen</div><div class="coin-count"><span class="coin-icon" role="img" aria-label="Gouden pandamunt"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="topPandaCoinGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1a6"/><stop offset=".28" stop-color="#ffd34f"/><stop offset=".68" stop-color="#e5a000"/><stop offset="1" stop-color="#fff0a1"/></linearGradient></defs><circle class="coin-rim" cx="20" cy="20" r="17.5"/><circle class="coin-inner" cx="20" cy="20" r="13.8"/><circle class="panda-mark" cx="12.5" cy="12.8" r="5.1"/><circle class="panda-mark" cx="27.5" cy="12.8" r="5.1"/><ellipse class="panda-mark" cx="20" cy="21.5" rx="12" ry="10.8"/><ellipse class="panda-mark" cx="20" cy="24" rx="7.5" ry="6.5"/><ellipse fill="#8c5700" cx="15.7" cy="20.5" rx="2.4" ry="3.4" transform="rotate(18 15.7 20.5)"/><ellipse fill="#8c5700" cx="24.3" cy="20.5" rx="2.4" ry="3.4" transform="rotate(-18 24.3 20.5)"/><circle class="panda-eye" cx="16.2" cy="23.3" r="1"/><circle class="panda-eye" cx="23.8" cy="23.3" r="1"/><ellipse fill="#8c5700" cx="20" cy="26" rx="1.8" ry="1.2"/></svg></span><span id="coinCount">0</span> muntjes</div></div>
+<nav class="tabs" aria-label="Hoofdnavigatie"><button class="tab-btn active" data-tab="exercises">💪 Oefeningen</button><button class="tab-btn" data-tab="shop">🛍️ Panda Shop</button><button class="tab-btn" data-tab="photos">📸 Progressiefoto’s</button></nav>
+<section class="view active" id="exerciseView"><div class="mascot-card motivator-banner"><img id="pandaMotivator" alt="Afbeelding van jouw geselecteerde panda" hidden><div class="speech" id="pandaQuote">Panda power aan! Jij kan dit! 💪<small>🐼 Jouw persoonlijke motivator</small></div></div><div class="layout" id="appLayout">
+<aside class="panel">
+<h2>Oefeningen</h2>
+<input class="search" id="search" type="search" placeholder="🔎  Zoek een oefening..." aria-label="Zoek oefening">
+<div class="exercise-list" id="exerciseList"></div>
+<hr>
+<h2>Oefening toevoegen</h2>
+<label for="newExercise">Naam van de oefening</label>
+<input id="newExercise" placeholder="Bijv. Incline dumbbell press">
+<label for="newGroup">Spiergroep (optioneel)</label>
+<select id="newGroup"><option value="Borst">Borst</option><option value="Rug">Rug</option><option value="Schouders">Schouders</option><option value="Biceps">Biceps</option><option value="Triceps">Triceps</option><option value="Benen">Benen</option><option value="Buik">Buik</option><option value="Billen">Billen</option><option value="Full body">Full body</option><option value="Overig">Overig</option></select>
+<button class="primary full" id="addExercise">+ Oefening toevoegen</button>
+<p class="notice">Je eigen oefeningen en trainingsgegevens worden in deze browser bewaard.</p>
+</aside>
+<section class="panel">
+<div id="workout"></div>
+</section>
+</div></section>
+<section class="view" id="calendarView"></section>
+<section class="view" id="shopView"></section><section class="view" id="photosView"></section><section class="view" id="settingsView"></section>
+</main>
+<script>
+const starter = [
+["Bench press","Borst"],["Incline dumbbell press","Borst"],["Chest fly","Borst"],["Lat pulldown","Rug"],["Seated cable row","Rug"],["Barbell row","Rug"],["Pull-up","Rug"],["Shoulder press","Schouders"],["Lateral raise","Schouders"],["Bicep curl","Biceps"],["Hammer curl","Biceps"],["Triceps pushdown","Triceps"],["Squat","Benen"],["Leg press","Benen"],["Romanian deadlift","Benen"],["Leg curl","Benen"],["Leg extension","Benen"],["Calf raise","Benen"],["Hip thrust","Billen"],["Plank","Buik"]
+];
+const KEY="gymprogress_v1";
+let data;
+try{data=JSON.parse(localStorage.getItem(KEY))||null}catch(e){data=null}
+if(!data)data={exercises:starter.map((x,i)=>({id:"e"+i,name:x[0],group:x[1]})),sessions:[]};
+if(!Array.isArray(data.progressPhotos))data.progressPhotos=[];
+if(!Array.isArray(data.trainingDays))data.trainingDays=[];
+if(!Array.isArray(data.calendarHiddenWorkoutDates))data.calendarHiddenWorkoutDates=[];
+// Neue Spielgegevens worden toegevoegd zonder bestaande trainingen of notities te wissen.
+if(!Number.isFinite(data.coins))data.coins=0;
+if(!Array.isArray(data.ownedPandas))data.ownedPandas=["power"];
+if(!data.ownedPandas.includes("power"))data.ownedPandas.unshift("power");
+if(!data.activePanda)data.activePanda="power";
+if(!data.ownedPandas.includes(data.activePanda))data.activePanda="power";
+let selectedId=data.exercises[0]?.id||null, draft=[], detailOpen=false, editingSessionId=null, editingSessionDate=null;
+const DRAFT_STORAGE_KEY="pinkpanda_unsaved_workout_drafts_v1";
+function readWorkoutDrafts(){try{return JSON.parse(localStorage.getItem(DRAFT_STORAGE_KEY)||"{}")}catch{return {}}}
+function storeWorkoutDraft(){if(!selectedId||editingSessionId)return;try{const all=readWorkoutDrafts();all[selectedId]={sets:draft.map(s=>({kg:String(s.kg??""),reps:String(s.reps??"")})),date:$('sessionDate')?.value||new Date().toLocaleDateString('en-CA')};localStorage.setItem(DRAFT_STORAGE_KEY,JSON.stringify(all))}catch{}}
+function loadWorkoutDraft(id){const saved=readWorkoutDrafts()[id];if(saved&&Array.isArray(saved.sets)&&saved.sets.length){draft=saved.sets.map(s=>({kg:String(s.kg??""),reps:String(s.reps??"")}));return saved}draft=[];return null}
+function clearWorkoutDraft(id){try{const all=readWorkoutDrafts();delete all[id];localStorage.setItem(DRAFT_STORAGE_KEY,JSON.stringify(all))}catch{}}
+let restDuration=90, restRemaining=90, restEndAt=null, restInterval=null;
+function coinIcon(){return `<span class="coin-icon" role="img" aria-label="Gouden pandamunt"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="pandaCoinGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1a6"/><stop offset=".28" stop-color="#ffd34f"/><stop offset=".68" stop-color="#e5a000"/><stop offset="1" stop-color="#fff0a1"/></linearGradient></defs><circle class="coin-rim" cx="20" cy="20" r="17.5"/><circle class="coin-inner" cx="20" cy="20" r="13.8"/><circle class="panda-mark" cx="12.5" cy="12.8" r="5.1"/><circle class="panda-mark" cx="27.5" cy="12.8" r="5.1"/><ellipse class="panda-mark" cx="20" cy="21.5" rx="12" ry="10.8"/><ellipse class="panda-mark" cx="20" cy="24" rx="7.5" ry="6.5"/><ellipse fill="#8c5700" cx="15.7" cy="20.5" rx="2.4" ry="3.4" transform="rotate(18 15.7 20.5)"/><ellipse fill="#8c5700" cx="24.3" cy="20.5" rx="2.4" ry="3.4" transform="rotate(-18 24.3 20.5)"/><circle class="panda-eye" cx="16.2" cy="20.3" r=".8"/><circle class="panda-eye" cx="23.8" cy="20.3" r=".8"/><ellipse fill="#8c5700" cx="20" cy="24.1" rx="1.7" ry="1.2"/><path d="M18 26.3 Q20 28.2 22 26.3" fill="none" stroke="#8c5700" stroke-width="1.1" stroke-linecap="round"/></svg></span>`}
+function fmtRest(seconds){const s=Math.max(0,Math.ceil(seconds));return `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`}
+function updateRestTimer(){if(restEndAt!==null)restRemaining=Math.max(0,Math.ceil((restEndAt-Date.now())/1000));if(restRemaining<=0&&restEndAt!==null){restRemaining=0;restEndAt=null;if(restInterval){clearInterval(restInterval);restInterval=null}const display=$("restTime");if(display)display.textContent="Klaar!";const start=$("restStart");if(start)start.textContent="Start";return}const display=$("restTime");if(display)display.textContent=fmtRest(restRemaining);const start=$("restStart");if(start)start.textContent=restEndAt!==null?"Pauze":"Start";}
+function bindRestTimer(){const choice=$("restDuration");if(!choice)return;choice.value=String(restDuration);updateRestTimer();choice.onchange=()=>{restDuration=Number(choice.value)||90;restRemaining=restDuration;restEndAt=null;if(restInterval){clearInterval(restInterval);restInterval=null}updateRestTimer()};$("restStart").onclick=()=>{if(restEndAt!==null){restRemaining=Math.max(0,Math.ceil((restEndAt-Date.now())/1000));restEndAt=null;if(restInterval){clearInterval(restInterval);restInterval=null}updateRestTimer();return}if(restRemaining<=0)restRemaining=restDuration;restEndAt=Date.now()+restRemaining*1000;if(restInterval)clearInterval(restInterval);restInterval=setInterval(updateRestTimer,250);updateRestTimer()};$("restReset").onclick=()=>{restEndAt=null;restRemaining=restDuration;if(restInterval){clearInterval(restInterval);restInterval=null}updateRestTimer()};}
+const $=id=>document.getElementById(id);
+const pandas=[
+ {id:"power",name:"Panda Power",emoji:"🐼",accessory:"💪",price:0,desc:"De gespierde klassieker. Altijd klaar voor een extra rep!",quote:"Panda power aan! Jij bent sterker dan je denkt. 💪"},
+ {id:"ninja",name:"Ninja Panda",emoji:"🐼",accessory:"🥷",price:25,desc:"Stil als een ninja, luid als je PR valt.",quote:"Sluip naar het rek… en steel die gains! 🥷"},
+ {id:"rockstar",name:"Rockstar Panda",emoji:"🐼",accessory:"🎸",price:45,desc:"Biceps op volume elf. Geen slechte set, alleen encore.",quote:"Deze set is voor alle fans van je toekomstige spieren! 🎸"},
+ {id:"chef",name:"Chef Panda",emoji:"🐼",accessory:"👨‍🍳",price:70,desc:"Kookt gains met een snufje proteïne.",quote:"Vandaag staat er één ding op het menu: gains à la panda! 🍜"},
+ {id:"pirate",name:"Piraat Panda",emoji:"🐼",accessory:"🏴‍☠️",price:100,desc:"Op zoek naar de verborgen schat: nog één herhaling.",quote:"Arrr! Verover dat gewicht en pak de buit! 🏴‍☠️"},
+ {id:"astronaut",name:"Ruimte Panda",emoji:"🐼",accessory:"🚀",price:135,desc:"Zwaartekracht is slechts een suggestie.",quote:"Drie, twee, één… lanceer die dumbbells! 🚀"},
+ {id:"samurai",name:"Samurai Panda",emoji:"🐼",accessory:"⚔️",price:175,desc:"Snijdt door smoesjes alsof het tofu is.",quote:"Discipline is jouw geheime wapen. Hajime! ⚔️"},
+ {id:"beach",name:"Beach Panda",emoji:"🐼",accessory:"🏄",price:220,desc:"Zonnebril op, gains aan, chill-modus uit.",quote:"Train nu, chill straks. De zomer-panda gelooft in je! 🏄"},
+ {id:"wizard",name:"Tovenaar Panda",emoji:"🐼",accessory:"🪄",price:270,desc:"Verandert spierpijn in spierkracht. Bijna magisch.",quote:"Wingardium Leviooo… die halter! 🪄"},
+ {id:"golden",name:"Gouden Panda",emoji:"🐼",accessory:"👑",price:330,desc:"Blinkt harder dan je nieuwe PR.",quote:"Gouden regel: elke herhaling telt. Jij ook! 👑"},
+ {id:"gamer",name:"Gamer Panda",emoji:"🐼",accessory:"🎮",price:400,desc:"Level up IRL. Geen respawn nodig.",quote:"Quest update: voltooi je sets en verdien XP… eh, gains! 🎮"},
+ {id:"cyber",name:"Cyber Panda",emoji:"🐼",accessory:"🤖",price:490,desc:"Geoptimaliseerd voor maximale spier-output.",quote:"Gains.exe is gestart. Foutmelding: geen excuses gevonden. 🤖"},
+ {id:"dragon",name:"Draken Panda",emoji:"🐼",accessory:"🐉",price:600,desc:"Vurig gemotiveerd en lichtelijk dramatisch.",quote:"Laat je innerlijke draak los. Niet op de halter bijten! 🐉"},
+ {id:"shadow",name:"Schaduw Panda",emoji:"🐼",accessory:"🌑",price:780,desc:"Zeldzaam, mysterieus en verrassend goed in squats.",quote:"Werk in stilte. Laat je progressie het lawaai maken. 🌑"},
+ {id:"legend",name:"Legendarische Panda",emoji:"🐼",accessory:"✨",price:1200,desc:"De mythische eindbaas van de Panda Shop.",quote:"Legendes worden niet geboren: ze doen hun laatste set. ✨"}
+];
+let activeTab="exercises", pendingPhotoData=[];
+const themes=[
+ {id:'pink',name:'Pink Panda',desc:'De originele roze stijl',bg:'#160916',glow:'#42153b',accent:'#ff4fa3',accent2:'#ffb6dc'},
+ {id:'ocean',name:'Ocean blauw',desc:'Koel en gefocust',bg:'#081521',glow:'#123b5b',accent:'#38bdf8',accent2:'#a5e5ff'},
+ {id:'mint',name:'Mint groen',desc:'Fris en energiek',bg:'#091914',glow:'#174b37',accent:'#45e0a1',accent2:'#a7f3d0'},
+ {id:'lavender',name:'Lavendel',desc:'Rustig paars',bg:'#130e20',glow:'#38245b',accent:'#b69aff',accent2:'#e0d2ff'},
+ {id:'sunset',name:'Sunset oranje',desc:'Warme zonsondergang',bg:'#20110b',glow:'#63301b',accent:'#ff9b54',accent2:'#ffd0a8'},
+ {id:'red',name:'Cherry rood',desc:'Krachtige rode look',bg:'#1e0b12',glow:'#5a182b',accent:'#ff5b79',accent2:'#ffb0bd'},
+ {id:'ice',name:'IJsblauw',desc:'Licht en helder',bg:'#0b1720',glow:'#1d4050',accent:'#73d7e8',accent2:'#c2f4fa'},
+ {id:'extreem-pink',name:'Extreem pink',desc:'Maximaal fel neonroze',bg:'#16000f',glow:'#ff00ff',accent:'#ff00ff',accent2:'#ff4dff'},
+ {id:'black',name:'Zwart',desc:'Strak zwart-wit, zonder roze',bg:'#050505',glow:'#242424',accent:'#eeeeee',accent2:'#ffffff'},
+ {id:'white',name:'Wit',desc:'Zacht zwart-wit, zonder roze',bg:'#e7e7e7',glow:'#d5d5d5',accent:'#222222',accent2:'#050505'},
+ {id:'gold',name:'Goud',desc:'Een beetje luxe',bg:'#191407',glow:'#514019',accent:'#f4c84e',accent2:'#ffebaa'}
+];
+const motivationQuotes=['Elke herhaling is een stem voor de sterkere versie van jezelf. 💪','Je hoeft niet perfect te trainen. Je moet gewoon blijven komen. 🐼','Kleine vooruitgang is nog altijd vooruitgang. ✨','Vandaag trainen, morgen trots zijn. 🔥','Je toekomstige zelf bedankt je voor deze training. 💗','Rustig aan, maar geef niet op. Panda power! 🐼','Eén stap vooruit is beter dan stil blijven staan. 🌱','Je inzet van vandaag bouwt aan de kracht van morgen. 💪','Vergelijk jezelf met wie je gisteren was. ✨','Ook kleine overwinningen verdienen een feestje. 🎉','Je bent begonnen, en dat is al winst. 🐼','Blijf opdagen voor jezelf. Je bent het waard. 💗','Sterk worden kost tijd; geef jezelf die tijd. ⏳','Maak van excuses een extra herhaling. 🔥','Je hoeft geen motivatie te voelen om tóch te beginnen. 🎯','Elke druppel zweet brengt je dichter bij je doel. 💦','De beste training is de training die je gedaan hebt. 🏋️','Jij schrijft je eigen progressieverhaal. 📖','Hou vol: jouw toekomstige zelf kijkt mee. 🌟','Vandaag een beetje beter, stap voor stap. 💖','Je grenzen verleggen begint met één poging. 🚀','Discipline brengt je verder dan wachten op het perfecte moment. 👑'];
+function applyTheme(id){const t=themes.find(x=>x.id===id)||themes[0];const mix=(a,b)=>{const A=a.match(/\w\w/g).map(v=>parseInt(v,16)),B=b.match(/\w\w/g).map(v=>parseInt(v,16));return '#'+A.map((v,i)=>Math.round(v*.72+B[i]*.28).toString(16).padStart(2,'0')).join('')};document.documentElement.style.setProperty('--bg',t.bg);document.documentElement.style.setProperty('--surface-glow',t.glow);document.documentElement.style.setProperty('--accent',t.accent);document.documentElement.style.setProperty('--accent2',t.accent2);document.documentElement.style.setProperty('--panel',mix(t.bg,t.glow));document.documentElement.style.setProperty('--panel2',mix(t.bg,t.accent));document.documentElement.style.setProperty('--line',mix(t.bg,t.accent));const mono=id==='black'||id==='white';document.documentElement.style.setProperty('--text',id==='white'?'#111111':'#fff8fc');document.documentElement.style.setProperty('--muted',id==='white'?'#444444':id==='black'?'#c8c8c8':mix('#d0a9c4',t.accent2));document.documentElement.style.setProperty('--danger',id==='white'?'#9f1239':'#ff8797');document.querySelector('meta[name="theme-color"]')?.setAttribute('content',t.bg);document.body.dataset.theme=t.id;localStorage.setItem('pinkpanda_theme',t.id);}
+function themeOwnership(){let owned;try{owned=JSON.parse(localStorage.getItem('pinkpanda_owned_themes')||'["pink"]')}catch(e){owned=['pink']}if(!Array.isArray(owned))owned=['pink'];if(!owned.includes('pink'))owned.unshift('pink');localStorage.setItem('pinkpanda_owned_themes',JSON.stringify(owned));return owned}
+function renderSettings(){const root=$('settingsView');const current=localStorage.getItem('pinkpanda_theme')||'pink';const owned=themeOwnership();root.innerHTML=`<div class="panel"><div class="eyebrow">Maak het helemaal van jou</div><h2 class="selected-title">⚙️ Instellingen</h2><p class="settings-intro">Ontgrendel een kleurthema met je verdiende muntjes. Elke kleur kost 15 muntjes, behalve Goud: 30 muntjes. Roze is altijd gratis en blijft de standaardkleur.</p><h3 class="section-title">🎨 Achtergrondkleuren</h3><div class="theme-grid">${themes.map(t=>{const has=owned.includes(t.id),price=t.id==='gold'?30:15;return `<button class="theme-option ${t.id===current?'selected':''} ${has?'':'locked'}" data-theme-choice="${t.id}" aria-pressed="${t.id===current}"><span class="theme-swatch" style="background:radial-gradient(circle at 30% 25%,${t.accent2},${t.glow} 70%,${t.bg})"></span><span><strong>${t.name}</strong><small>${t.desc}</small><span class="theme-price">${has?(t.id===current?'✓ Actief':'✓ Ontgrendeld'):`🔒 ${price} ${coinIcon()}`}</span></span>${t.id===current?'<span style="margin-left:auto">✓</span>':(!has?'<span style="margin-left:auto">🔒</span>':'')}</button>`}).join('')}</div><div class="settings-actions" style="margin-top:12px"><button class="secondary small" id="resetTheme">Terug naar roze 💗</button></div><div class="settings-feature" id="backupFeature"><h3>💾 Back-up van je gegevens</h3><p>Bewaar je trainingen, oefeningen, notities, kalender, kleuren, panda’s én progressiefoto’s in één bestand. Zet het bestand bijvoorbeeld in Google Drive, zodat je het op een nieuw toestel kunt terugzetten.</p><p id="lastBackupInfo">${formatLastBackup()}</p><div class="settings-actions"><button class="primary small" id="makeBackup">Back-up maken ⬇️</button><button class="secondary small" id="chooseBackup">Back-up terugzetten ⬆️</button><input id="backupFileInput" type="file" accept="application/json,.json" hidden></div><p class="notice">Bij terugzetten worden de huidige gegevens op dit toestel vervangen door de gegevens uit het gekozen back-upbestand.</p></div></div>`;
+ root.querySelectorAll('[data-theme-choice]').forEach(b=>b.onclick=()=>{const id=b.dataset.themeChoice;let owned=themeOwnership();if(!owned.includes(id)){const price=id==='gold'?30:15;if((Number(data.coins)||0)<price){alert(`Je hebt ${price} muntjes nodig om deze kleur te ontgrendelen. Je hebt er ${Number(data.coins)||0}.`);return;}data.coins-=price;persist();owned.push(id);localStorage.setItem('pinkpanda_owned_themes',JSON.stringify(owned));$('coinCount').textContent=Number(data.coins).toLocaleString('nl-BE');}applyTheme(id);renderSettings()});$('resetTheme').onclick=()=>{applyTheme('pink');renderSettings()};
+ $('makeBackup').onclick=makeBackupFile;
+ $('chooseBackup').onclick=()=>$('backupFileInput').click();
+ $('backupFileInput').onchange=restoreBackupFile;
+}
+const LAST_BACKUP_KEY='pinkpanda_last_backup_v1';
+function formatLastBackup(){const value=localStorage.getItem(LAST_BACKUP_KEY);if(!value)return 'Nog geen back-up gemaakt op dit toestel.';const d=new Date(value);return 'Laatst gemaakte back-up: '+(Number.isNaN(d.getTime())?value:d.toLocaleString('nl-BE'));}
+function makeBackupFile(){
+ try{
+  const createdAt=new Date().toISOString();localStorage.setItem(LAST_BACKUP_KEY,createdAt);
+  const entries=[];for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(key!==null)entries.push([key,localStorage.getItem(key)]);}
+  const backup={format:'PinkPandaProgression-backup',version:1,createdAt,entries};
+  const blob=new Blob([JSON.stringify(backup)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='PinkPandaProgression_backup_'+createdAt.slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  const info=$('lastBackupInfo');if(info)info.textContent=formatLastBackup();
+ }catch(err){alert('De back-up kon niet worden gemaakt. Controleer of er voldoende opslagruimte beschikbaar is.');}
+}
+function restoreBackupFile(event){
+ const file=event.target.files&&event.target.files[0];if(!file)return;
+ const reader=new FileReader();reader.onload=()=>{
+  try{
+   const backup=JSON.parse(String(reader.result||''));
+   if(!backup||backup.format!=='PinkPandaProgression-backup'||backup.version!==1||!Array.isArray(backup.entries)||!backup.entries.every(item=>Array.isArray(item)&&item.length===2&&typeof item[0]==='string'&&(typeof item[1]==='string'||item[1]===null)))throw new Error('invalid backup');
+   if(!confirm('Weet je zeker dat je deze back-up wilt terugzetten? Alle huidige gegevens in deze browser worden vervangen door de gegevens uit het back-upbestand. Maak eventueel eerst een back-up van de huidige gegevens.')){event.target.value='';return;}
+   localStorage.clear();for(const [key,value] of backup.entries){if(value!==null)localStorage.setItem(key,value);}
+   if(backup.createdAt)localStorage.setItem(LAST_BACKUP_KEY,backup.createdAt);
+   alert('Back-up teruggezet. De app wordt opnieuw geladen.');window.location.reload();
+  }catch(err){alert('Dit bestand lijkt geen geldige PinkPandaProgression-back-up te zijn. Je huidige gegevens zijn niet aangepast.');event.target.value='';}
+ };reader.onerror=()=>{alert('Het back-upbestand kon niet worden gelezen.');event.target.value='';};reader.readAsText(file);
+}
+applyTheme(localStorage.getItem('pinkpanda_theme')||'pink');
+function activePanda(){return pandas.find(p=>p.id===data.activePanda)||pandas[0]}
+function updateCoins(){const el=$("coinCount");if(el)el.textContent=Number(data.coins||0).toLocaleString("nl-BE");const total=$("exerciseTotal");if(total)total.textContent=Number((data.sessions||[]).length).toLocaleString("nl-BE")}
+function pandaArt(p,large=false){return `<div class="panda-face ${large?'panda-large':''}" aria-label="${esc(p.name)}"><span class="panda-placeholder" aria-hidden="true">🐼<small>${esc(p.accessory||'')}</small></span><img src="./pandas/${p.id}.jpg" alt="${esc(p.name)}" loading="lazy" onerror="this.remove()"></div>`}
+function renderMotivator(){const p=activePanda();const img=$("pandaMotivator");const quote=$("pandaQuote");if(img){img.hidden=true;img.onerror=()=>{img.hidden=true;};img.onload=()=>{img.hidden=false;};img.src=`./pandas/motivator/${p.id}.jpg`;img.alt=p.name;}if(quote){const quotes=[p.quote,"Elke rep brengt je dichter bij je doel. Jij kan dit! 💪","Kleine stappen, grote gains. Panda trots op jou! 🐼","Ook op een mindere dag is opdagen winst. 💗","Je hoeft niet sneller te gaan dan gisteren; blijf gewoon vooruitgaan. 🌱","Eén set tegelijk. Jij bouwt aan iets sterks! 💪","Je bent sterker dan het stemmetje dat zegt dat je moet stoppen. 🔥","Niet elke training is top, maar elke training telt. 🐼","Focus op je eigen vooruitgang, niet op die van een ander. ✨","Begin waar je bent. Gebruik wat je hebt. Doe wat je kan. 💗","Je doel wordt haalbaar door de kleine keuzes die je vandaag maakt. 🎯","Adem in, pak die halter, en geef jezelf een kans. 🏋️","Rust nemen is slim; opgeven hoeft niet. 💖","Jouw inzet telt, zelfs als niemand anders het ziet. 🌟","Maak jezelf trots, herhaling na herhaling. 👑","Elke training is een investering in jezelf. 💪","Je hoeft alleen jezelf van gisteren te verslaan. 🐼","Blijf geduldig: groei gebeurt niet in één dag. 🌱","Vandaag is een nieuwe kans om sterker te worden. 🔥","Kracht begint met komen opdagen. Jij bent er! ✨"];quote.innerHTML=`${esc(quotes[Math.floor(Math.random()*quotes.length)])}<small>🐼 ${esc(p.name)} moedigt je aan</small>`;}}
+function openCharacterPreview(src,alt){const modal=$("characterPreview");const image=$("characterPreviewImage");if(!modal||!image)return;image.src=src;image.alt=alt||"Panda-karakter";modal.classList.add("open");modal.setAttribute("aria-hidden","false");}
+function closeCharacterPreview(){const modal=$("characterPreview");if(!modal)return;modal.classList.remove("open");modal.setAttribute("aria-hidden","true");$("characterPreviewImage").src="";}
+function renderShop(){const owned=data.ownedPandas;$("shopView").innerHTML=`<div class="panel"><div class="topline"><div><div class="eyebrow">Verzamel ze allemaal</div><h2 class="selected-title">🐼 Panda Shop</h2><p class="muted">Verdien 1 muntje wanneer je een oefeningstraining opslaat. Kies een panda die jou motiveert op het tabblad Oefeningen.</p></div><div class="coin-count">${coinIcon()}${Number(data.coins).toLocaleString('nl-BE')}</div></div><div class="shop-intro">De eerste panda is gratis. De prijzen zijn uniek en oplopend. Train regelmatig en ook de zeldzaamste panda wordt haalbaar!</div><div class="character-grid">${pandas.map(p=>{const has=owned.includes(p.id),active=data.activePanda===p.id;return `<article class="panda-card ${has?'owned':''}">${pandaArt(p)}<h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p><div class="panda-price">${p.price===0?'Gratis':`${coinIcon()} ${p.price.toLocaleString('nl-BE')}`}</div>${has?`<div class="owned-tag">${active?'✓ Jouw actieve panda':'✓ In jouw collectie'}</div><button class="${active?'secondary':'primary'} small" data-select-panda="${p.id}" ${active?'disabled':''}>${active?'Geselecteerd':'Kies als motivator'}</button>`:`<button class="primary small" data-buy-panda="${p.id}" ${data.coins<p.price?'disabled':''}>${data.coins<p.price?'Nog '+(p.price-data.coins)+' coins nodig':'Koop panda'}</button>`}</article>`}).join('')}</div></div>`;
+ $("shopView").querySelectorAll(".panda-face img").forEach(img=>{img.addEventListener("click",()=>openCharacterPreview(img.src,img.alt));img.tabIndex=0;img.setAttribute("role","button");img.setAttribute("aria-label",`Bekijk ${img.alt} groter`);img.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openCharacterPreview(img.src,img.alt);}})});
+ $("shopView").querySelectorAll('[data-buy-panda]').forEach(b=>b.onclick=()=>{const p=pandas.find(x=>x.id===b.dataset.buyPanda);if(!p||data.ownedPandas.includes(p.id)||data.coins<p.price)return;data.coins-=p.price;data.ownedPandas.push(p.id);persist();updateCoins();renderShop();renderMotivator();});
+ $("shopView").querySelectorAll('[data-select-panda]').forEach(b=>b.onclick=()=>{if(!data.ownedPandas.includes(b.dataset.selectPanda))return;data.activePanda=b.dataset.selectPanda;persist();renderShop();renderMotivator();renderWorkout();});}
+function switchTab(tab){activeTab=['shop','photos','settings','calendar'].includes(tab)?tab:'exercises';document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===activeTab));document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(({shop:'shopView',photos:'photosView',settings:'settingsView',calendar:'calendarView',exercises:'exerciseView'})[activeTab]).classList.add('active');if(activeTab==='shop')renderShop();else if(activeTab==='photos')renderPhotos();else if(activeTab==='settings')renderSettings();else if(activeTab==='calendar')renderCalendar();else{renderMotivator();renderList();renderWorkout();}window.scrollTo({top:0,behavior:'smooth'})}
+function localISODate(d=new Date()){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`}
+let calendarMonth=new Date();
+function renderCalendar(){
+ const root=$("calendarView");if(!root)return;
+ const year=calendarMonth.getFullYear(),month=calendarMonth.getMonth(),first=new Date(year,month,1),daysInMonth=new Date(year,month+1,0).getDate(),offset=(first.getDay()+6)%7;
+ const monthName=calendarMonth.toLocaleDateString('nl-BE',{month:'long',year:'numeric'});
+ const entries=[...data.trainingDays].sort((a,b)=>b.date.localeCompare(a.date));
+ const workoutDates=new Set((data.sessions||[]).map(x=>x.date));
+ const hiddenWorkoutDates=new Set(data.calendarHiddenWorkoutDates||[]);
+ const byDate={};entries.forEach(x=>{byDate[x.date]=x.training});
+ const weekdays=['Ma','Di','Wo','Do','Vr','Za','Zo'];
+ let cells='';for(let i=0;i<offset;i++)cells+='<div class="calendar-day empty"></div>';
+ for(let day=1;day<=daysInMonth;day++){const date=`${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;const showWorkoutMarker=workoutDates.has(date)&&!hiddenWorkoutDates.has(date);const trained=Boolean(byDate[date])||showWorkoutMarker;const training=byDate[date]||(showWorkoutMarker?'Training opgeslagen':'');cells+=`<button type="button" class="calendar-day ${trained?'trained':''} ${date===localISODate()?'today':''}" data-calendar-date="${date}" aria-label="${date}${training?': '+esc(training):': geen training geregistreerd'}"><span class="day-number">${day}</span>${trained?`<span>💪</span><span class="day-training">${esc(training)}</span>`:'<span class="day-training">—</span>'}</button>`}
+ const motivator=activePanda();
+ root.innerHTML=`<div class="panel calendar-panel"><div class="calendar-prompt"><img src="./pandas/motivator/${motivator.id}.jpg" alt="${esc(motivator.name)}" onerror="this.style.display='none'"><div class="calendar-prompt-content"><div class="calendar-speech">Wat heb je vandaag getraint?</div><label for="trainingDescription">Vertel het aan ${esc(motivator.name)}:</label><input id="trainingDescription" maxlength="120" placeholder="Bijv. Borst en tricep, rug en bicep…"></div></div><div class="calendar-save-top"><button class="primary" id="saveTrainingDay">Training opslaan</button></div><div class="eyebrow">Jouw consistentie</div><h2 class="selected-title">🗓️ Trainingskalender</h2><p class="muted">Klik op een dag om de datum te selecteren. Je kunt ook een training van een eerdere dag toevoegen.</p><div class="calendar-head"><button class="secondary small" id="calendarPrev">← Vorige</button><h3 style="margin:0;text-transform:capitalize">${esc(monthName)}</h3><button class="secondary small" id="calendarNext">Volgende →</button></div><div class="calendar-grid">${weekdays.map(d=>`<div class="calendar-weekday">${d}</div>`).join('')}${cells}</div><div class="calendar-form"><div class="wide"><label for="trainingDate">Geselecteerde datum</label><input id="trainingDate" type="date" value="${localISODate()}" required></div><div class="wide muted" id="calendarStatus" aria-live="polite">Selecteer een datum op de kalender en vul hierboven je training in.</div><div class="wide"><button class="secondary" id="deleteSelectedTraining">Verwijder training van geselecteerde dag</button></div></div></div>`;
+ const dateInput=$("trainingDate"),desc=$("trainingDescription"),status=$("calendarStatus");
+ function loadDate(date){dateInput.value=date;const found=data.trainingDays.find(x=>x.date===date);desc.value=found?.training||'';status.textContent=found?'Training geregistreerd: '+found.training:(workoutDates.has(date)?'Je hebt op deze dag al een oefeningstraining opgeslagen. Je kunt hier ook een trainingsnaam toevoegen.':'Nog geen training geregistreerd voor deze dag.');}
+ root.querySelectorAll('[data-calendar-date]').forEach(b=>b.onclick=()=>loadDate(b.dataset.calendarDate));
+ dateInput.onchange=()=>{if(dateInput.value)loadDate(dateInput.value)};
+ $('calendarPrev').onclick=()=>{calendarMonth=new Date(year,month-1,1);renderCalendar()};$('calendarNext').onclick=()=>{calendarMonth=new Date(year,month+1,1);renderCalendar()};
+ $('saveTrainingDay').onclick=()=>{const date=dateInput.value,training=desc.value.trim();if(!date){status.textContent='Kies eerst een datum.';return}if(!training){status.textContent='Vul in wat je hebt getraind of gaat trainen.';return}const i=data.trainingDays.findIndex(x=>x.date===date);if(i>=0)data.trainingDays[i].training=training;else data.trainingDays.push({date,training});data.calendarHiddenWorkoutDates=(data.calendarHiddenWorkoutDates||[]).filter(d=>d!==date);persist();calendarMonth=new Date(date+'T12:00:00');renderCalendar();const updated=$('calendarStatus');if(updated)updated.textContent='✓ Training opgeslagen voor '+formatDate(date)+'.';};
+ $('deleteSelectedTraining').onclick=()=>{const date=dateInput.value;if(!date){status.textContent='Selecteer eerst een datum.';return}data.trainingDays=data.trainingDays.filter(x=>x.date!==date);if(!Array.isArray(data.calendarHiddenWorkoutDates))data.calendarHiddenWorkoutDates=[];if(workoutDates.has(date)&&!data.calendarHiddenWorkoutDates.includes(date))data.calendarHiddenWorkoutDates.push(date);persist();renderCalendar();const refreshedDate=$("trainingDate"),refreshedStatus=$("calendarStatus"),refreshedDesc=$("trainingDescription");refreshedDate.value=date;refreshedDesc.value='';refreshedStatus.textContent='De kalendertraining voor '+formatDate(date)+' is verwijderd. Andere opgeslagen oefeningstrainingen blijven behouden.'};
+}
+function renderPhotos(){
+ const root=$("photosView");
+ const photos=[...(data.progressPhotos||[])].sort((a,b)=>b.date.localeCompare(a.date)||(a.createdAt||0)-(b.createdAt||0));
+ const byDate=new Map();photos.forEach(ph=>{if(!byDate.has(ph.date))byDate.set(ph.date,[]);byDate.get(ph.date).push(ph)});
+ const days=[...byDate.entries()];
+ root.innerHTML=`<div class="panel"><div class="topline"><div><div class="eyebrow">Jouw transformatie</div><h2 class="selected-title">📸 Progressiefoto’s</h2><p class="muted">Foto’s van dezelfde datum staan samen in één diavoorstelling. Gebruik de pijltjes om tussen foto’s van die dag te wisselen. Klik op een foto om die groter te bekijken.</p></div></div><div class="note-card"><div class="note-title">➕ Nieuwe progressiefoto</div><form id="photoForm"><div class="photo-form"><div class="wide"><label for="progressPhotoFile">Kies foto’s uit je fotobibliotheek of neem een nieuwe foto (meerdere tegelijk mogelijk)</label><input id="progressPhotoFile" type="file" accept="image/*" multiple required><img id="progressPhotoPreview" class="photo-preview" alt="Voorbeeld van je gekozen progressiefoto"><div id="photoSelectionInfo" class="muted" style="font-size:12px;margin-top:6px"></div></div><div><label for="progressPhotoDate">Datum</label><input id="progressPhotoDate" type="date" value="${new Date().toLocaleDateString('en-CA')}" required></div><div><label for="progressPhotoWeight">Gewicht (kg)</label><input id="progressPhotoWeight" type="number" min="0" max="500" step="0.1" placeholder="Bijv. 75,5"></div><div class="wide"><label for="progressPhotoNotes">Notities (optioneel)</label><textarea id="progressPhotoNotes" maxlength="1200" placeholder="Bijv. bicepsomtrek, hoe je je voelt, trainingsdoelen…"></textarea></div><div class="wide"><button class="primary full" type="submit">Foto opslaan</button><div class="notice">Foto's worden op dit toestel in deze browser bewaard. Kies bij voorkeur foto's die niet te groot zijn.</div><div id="photoFormStatus" class="toast" aria-live="polite"></div></div></div></form></div><h3 class="section-title">Jouw foto's (${photos.length}) · ${days.length} ${days.length===1?'datum':'datums'}</h3>${days.length?days.map(([date,dayPhotos],dayIndex)=>`<article class="day-slideshow" data-day-index="${dayIndex}"><img class="day-photo zoomable-progress-photo" src="${dayPhotos[0].image}" alt="Progressiefoto van ${esc(formatDate(date))} — klik om te vergroten" loading="lazy" tabindex="0" role="button" aria-label="Foto vergroten"><div class="slideshow-controls"><button class="secondary small" type="button" data-slide-prev="${dayIndex}" ${dayPhotos.length<2?'disabled':''}>← Vorige</button><span class="slide-position" data-slide-position="${dayIndex}">1 / ${dayPhotos.length}</span><button class="secondary small" type="button" data-slide-next="${dayIndex}" ${dayPhotos.length<2?'disabled':''}>Volgende →</button></div><div class="day-photo-info"><h3>${esc(formatDate(date))}</h3><div class="photo-meta">${dayPhotos[0].weight!==''&&dayPhotos[0].weight!=null?`<span>⚖️ ${esc(String(dayPhotos[0].weight))} kg</span>`:''}</div>${dayPhotos[0].notes?`<p>📝 ${esc(dayPhotos[0].notes)}</p>`:'<p class="muted">Geen notities toegevoegd.</p>'}<div class="photo-actions"><button class="secondary small" data-delete-photo="${esc(dayPhotos[0].id)}">Deze foto verwijderen</button></div></div></article>`).join(''):`<div class="empty-card">Je hebt nog geen progressiefoto's opgeslagen. Voeg je eerste foto toe om je vooruitgang bij te houden. 💗</div>`}</div>`;
+ const fileInput=$("progressPhotoFile"), preview=$("progressPhotoPreview"), selectionInfo=$("photoSelectionInfo");
+ fileInput.onchange=()=>{pendingPhotoData=[];preview.style.display='none';preview.removeAttribute('src');if(selectionInfo)selectionInfo.textContent='';const files=Array.from(fileInput.files||[]);if(!files.length)return;const status=$("photoFormStatus");let finished=0;const results=new Array(files.length);const finish=()=>{if(finished===files.length){pendingPhotoData=results.filter(Boolean);if(pendingPhotoData.length){preview.src=pendingPhotoData[0];preview.style.display='block';if(selectionInfo)selectionInfo.textContent=pendingPhotoData.length+' foto(’s) klaar om op te slaan.';}}};files.forEach((file,index)=>{if(!file.type.startsWith('image/')){finished++;if(status)status.textContent='Een geselecteerd bestand is geen afbeelding.';finish();return}const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{const max=1200,scale=Math.min(1,max/Math.max(img.width,img.height));const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(img.width*scale));canvas.height=Math.max(1,Math.round(img.height*scale));const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0,canvas.width,canvas.height);results[index]=canvas.toDataURL('image/jpeg',0.78);finished++;finish()};img.onerror=()=>{finished++;if(status)status.textContent='Een afbeelding kon niet worden geopend. Probeer die foto opnieuw.';finish()};img.src=reader.result};reader.onerror=()=>{finished++;if(status)status.textContent='Een bestand kon niet worden gelezen.';finish()};reader.readAsDataURL(file)});};
+ $("photoForm").onsubmit=e=>{e.preventDefault();const status=$("photoFormStatus");if(!pendingPhotoData.length){status.textContent='Kies eerst één of meerdere foto’s en wacht tot het voorbeeld verschijnt.';return}const date=$("progressPhotoDate").value,weight=$("progressPhotoWeight").value.trim(),notes=$("progressPhotoNotes").value.trim();if(!date){status.textContent='Kies een datum.';return}const stamp=Date.now();const added=pendingPhotoData.map((image,i)=>({id:'photo'+stamp+'_'+i,image,date,weight,notes,createdAt:stamp+i}));data.progressPhotos.push(...added);try{persist();pendingPhotoData=[];renderPhotos()}catch(err){data.progressPhotos=data.progressPhotos.filter(ph=>!added.some(a=>a.id===ph.id));status.textContent='Er is onvoldoende lokale opslagruimte. Probeer kleinere foto’s of verwijder oude foto’s.';}};
+ // Iedere datum heeft een eigen diavoorstelling; de pijlen wisselen alleen foto's binnen die datum.
+ root.querySelectorAll('.day-slideshow').forEach(card=>{const dayIndex=Number(card.dataset.dayIndex),date=days[dayIndex][0],dayPhotos=days[dayIndex][1];let current=0;const image=card.querySelector('.day-photo'),position=card.querySelector('.slide-position'),info=card.querySelector('.day-photo-info');const show=()=>{const ph=dayPhotos[current];image.src=ph.image;image.alt='Progressiefoto van '+formatDate(date)+' — klik om te vergroten';position.textContent=(current+1)+' / '+dayPhotos.length;info.innerHTML=`<h3>${esc(formatDate(date))}</h3><div class="photo-meta">${ph.weight!==''&&ph.weight!=null?`<span>⚖️ ${esc(String(ph.weight))} kg</span>`:''}</div>${ph.notes?`<p>📝 ${esc(ph.notes)}</p>`:'<p class="muted">Geen notities toegevoegd.</p>'}<div class="photo-actions"><button class="secondary small" data-delete-photo="${esc(ph.id)}">Deze foto verwijderen</button></div>`;bindDelete(info.querySelector('[data-delete-photo]') );};card.querySelector('[data-slide-prev]').onclick=()=>{current=(current-1+dayPhotos.length)%dayPhotos.length;show()};card.querySelector('[data-slide-next]').onclick=()=>{current=(current+1)%dayPhotos.length;show()};const open=()=>{const lightbox=$("photoLightbox"),large=$("photoLightboxImage");large.src=image.src;lightbox.classList.add('open');document.body.style.overflow='hidden'};image.onclick=open;image.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}};});
+ function bindDelete(btn){if(btn)btn.onclick=()=>{if(confirm('Deze progressiefoto verwijderen?')){data.progressPhotos=data.progressPhotos.filter(ph=>ph.id!==btn.dataset.deletePhoto);persist();renderPhotos()}}}
+ root.querySelectorAll('[data-delete-photo]').forEach(bindDelete);
+}
+function closePhotoLightbox(){const lightbox=$("photoLightbox");if(lightbox)lightbox.classList.remove('open');document.body.style.overflow='';} $("closePhotoLightbox").onclick=closePhotoLightbox; $("photoLightbox").addEventListener('click',e=>{if(e.target.id==='photoLightbox')closePhotoLightbox()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePhotoLightbox()});
+document.addEventListener('click',e=>{const point=e.target.closest('.chart-point');if(!point)return;const parts=(point.dataset.chartDetail||'').split('|');alert(parts[0]+'\n'+(point.closest('.chart-card')?.querySelector('.chart-title')?.textContent||'Training')+': '+parts[1]+' '+parts[2]);});document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList?.contains('chart-point')){e.preventDefault();e.target.dispatchEvent(new MouseEvent('click',{bubbles:true}));}});
+
+function persist(){localStorage.setItem(KEY,JSON.stringify(data))}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function exerciseById(id){return data.exercises.find(e=>e.id===id)}
+function sessionsFor(id){return data.sessions.filter(s=>s.exerciseId===id).sort((a,b)=>b.date.localeCompare(a.date)||b.savedAt-a.savedAt)}
+function formatDate(s){return new Date(s+"T12:00:00").toLocaleDateString("nl-BE",{day:"numeric",month:"short",year:"numeric"})}
+function volume(sets){return sets.reduce((sum,s)=>sum+(Number(s.kg)||0)*(Number(s.reps)||0),0)}
+function makeLineChart(sessions, metric, title, unit, color){
+ const points=sessions.map(s=>({date:s.date,value:metric==='weight'?Math.max(0,...s.sets.map(x=>Number(x.kg)||0)):volume(s.sets)}));
+ if(!points.length)return `<div class="chart-card"><div class="chart-title">${title}</div><div class="chart-subtitle">Je vooruitgang verschijnt zodra je trainingen opslaat.</div><div class="chart-empty">🐼 Nog geen gegevens om te tekenen. Sla je eerste training op!</div></div>`;
+ const W=340,H=174,L=37,R=10,T=12,B=34, PW=W-L-R,PH=H-T-B;
+ const vals=points.map(p=>p.value), lo=Math.min(0,...vals), hi=Math.max(...vals), span=(hi-lo)||1;
+ const x=i=>L+(points.length===1?PW/2:i*PW/(points.length-1));
+ const y=v=>T+PH-((v-lo)/span)*PH;
+ const grid=[0,.25,.5,.75,1].map(f=>{let val=lo+span*f, yy=y(val);return `<line x1="${L}" y1="${yy}" x2="${W-R}" y2="${yy}" stroke="#53364f" stroke-width="1"/><text x="${L-6}" y="${yy+4}" fill="#d0a9c4" font-size="9" text-anchor="end">${Number(val.toFixed(1)).toLocaleString('nl-BE')}</text>`}).join('');
+ const poly=points.map((p,i)=>`${x(i)},${y(p.value)}`).join(' ');
+ const circles=points.map((p,i)=>{const shown=p.value.toLocaleString('nl-BE',{maximumFractionDigits:1});const dateText=formatDate(p.date);return `<circle class="chart-point" cx="${x(i)}" cy="${y(p.value)}" r="5" fill="${color}" stroke="var(--text)" stroke-width="1.5" tabindex="0" role="button" aria-label="${dateText}: ${shown} ${unit}. Tik voor details" data-chart-detail="${esc(dateText+'|'+shown+'|'+unit)}"><title>${dateText}: ${shown} ${unit} — tik voor details</title></circle>`}).join('');
+ const first=esc(new Date(points[0].date+'T12:00:00').toLocaleDateString('nl-BE',{day:'numeric',month:'short'}));
+ const last=esc(new Date(points[points.length-1].date+'T12:00:00').toLocaleDateString('nl-BE',{day:'numeric',month:'short'}));
+ const dateLabels=points.length===1?`<text x="${W/2}" y="${H-10}" fill="#d0a9c4" font-size="10" text-anchor="middle">${first}</text>`:`<text x="${L}" y="${H-10}" fill="#d0a9c4" font-size="10" text-anchor="start">${first}</text><text x="${W-R}" y="${H-10}" fill="#d0a9c4" font-size="10" text-anchor="end">${last}</text>`;
+ return `<div class="chart-card"><div class="chart-title">${title}</div><div class="chart-subtitle">${points.length} ${points.length===1?'training':'trainingen'} · oudste naar nieuwste</div><svg class="chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${title}">${grid}<polyline points="${poly}" fill="none" stroke="${color}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>${circles}${dateLabels}</svg><div class="chart-legend"><span><i class="chart-dot" style="background:${color}"></i>${metric==='weight'?'Hoogste gewicht':'Totaal volume'} (${unit})</span><span>Tip: tik op een punt voor datum en waarde.</span></div></div>`;
+}
+function renderProgressCharts(sessions){
+ const chronological=[...sessions].sort((a,b)=>a.date.localeCompare(b.date)||(a.savedAt||0)-(b.savedAt||0));
+ const theme=localStorage.getItem('pinkpanda_theme')||'pink';const weightColor=theme==='black'?'#ffffff':theme==='white'?'#222222':'#ff4fa3';const volumeColor=theme==='black'?'#a8a8a8':theme==='white'?'#666666':'#ffb6dc';return `<div class="progress-section"><h3>🐼 Jouw progressie voor deze oefening</h3><div class="chart-grid">${makeLineChart(chronological,'weight','Zwaarste gewicht per training','kg',weightColor)}${makeLineChart(chronological,'volume','Totaal trainingsvolume per training','kg',volumeColor)}</div></div>`;
+}
+function renderList(){
+ const q=$("search").value.trim().toLowerCase();
+ const list=data.exercises.filter(e=>(e.name+" "+e.group).toLowerCase().includes(q)).sort((a,b)=>a.name.localeCompare(b.name));
+ $("exerciseList").innerHTML=list.length?list.map(e=>`<button class="exercise ${e.id===selectedId?"active":""}" data-id="${esc(e.id)}"><span>${esc(e.name)}<small>${esc(e.group||"Overig")}</small></span><span>›</span></button>`).join(""):`<div class="empty">Geen oefeningen gevonden.</div>`;
+ $("exerciseList").querySelectorAll("[data-id]").forEach(b=>b.addEventListener("click",()=>{selectedId=b.dataset.id;loadWorkoutDraft(selectedId);editingSessionId=null;editingSessionDate=null;detailOpen=true;$("appLayout").classList.add("detail-mode");renderList();renderWorkout();window.scrollTo({top:0,behavior:"smooth"})}));
+}
+function renderWorkout(){
+ const motivatorBanner=document.querySelector(".motivator-banner");if(motivatorBanner)motivatorBanner.style.display=detailOpen?"none":"";
+ const e=exerciseById(selectedId), root=$("workout");
+ if(!detailOpen){root.innerHTML='';return}
+ if(!e){root.innerHTML='<div class="empty">Voeg een oefening toe om te beginnen.</div>';return}
+ const sessions=sessionsFor(e.id), last=sessions[0];
+ const latestSaved=[...data.sessions].sort((a,b)=>(b.savedAt||0)-(a.savedAt||0))[0];
+ const canEditLast=!!last&&!!latestSaved&&latestSaved===last;
+ const savedDraft=!draft.length?loadWorkoutDraft(e.id):null;if(!draft.length)draft=[{kg:"",reps:""},{kg:"",reps:""},{kg:"",reps:""}];
+ const allSets=sessions.flatMap(s=>s.sets), bestKg=allSets.reduce((m,s)=>Math.max(m,Number(s.kg)||0),0);
+ const bestVolume=allSets.reduce((m,s)=>Math.max(m,volume(s.sets||[])),0);
+ root.innerHTML=`
+ <div class="detail-heading"><button class="secondary back-button" id="backToExercises">← Alle oefeningen</button><div><div class="eyebrow">Oefening bekijken</div><span class="muted">${esc(e.group||"Overig")}</span></div></div><div class="topline"><div><h2 class="selected-title">${esc(e.name)}</h2></div><button class="secondary small" id="deleteExercise">Verwijder oefening</button></div>
+ <div class="stats"><div class="stat"><span>Aantal trainingen</span><strong>${sessions.length}</strong></div><div class="stat"><span>Zwaarste gewicht</span><strong>${bestKg} <small style="font-size:11px">kg</small></strong></div><div class="stat"><span>Laatste sessie</span><strong style="font-size:14px">${last?esc(formatDate(last.date)):"—"}</strong></div></div>
+ ${last?`<div class="previous"><strong>Vorige keer · ${esc(formatDate(last.date))}</strong><p>${last.sets.map((s,i)=>`Set ${i+1}: ${esc(s.kg)} kg × ${esc(s.reps)} reps`).join("　·　")}</p><p>Totaal volume: ${Math.round(volume(last.sets)).toLocaleString("nl-BE")} kg · ${last.sets.length} sets</p></div>`:`<div class="previous"><strong>Nog geen vorige training</strong><p>Vul hieronder je sets in. Je kunt ze bij je volgende training vergelijken.</p></div>`}
+ <div class="rest-timer" aria-label="Rusttimer"><span class="timer-label">⏱ Rust</span><select id="restDuration" aria-label="Rustduur"><option value="90">1,5 min</option><option value="120">2 min</option><option value="150">2,5 min</option><option value="180">3 min</option></select><span class="rest-time" id="restTime">1:30</span><button type="button" class="timer-start" id="restStart">Start</button><button type="button" class="timer-reset" id="restReset">↺</button></div>
+ <label for="sessionDate">Datum van de training</label><input id="sessionDate" type="date" value="${new Date().toLocaleDateString('en-CA')}">
+ <div style="margin-top:17px" class="table-head"><span>Set</span><span>Gewicht (kg)</span><span>Reps</span><span></span></div>
+ <div id="sets">${draft.map((s,i)=>`<div class="set-row"><div class="set-num">${i+1}</div><input type="number" min="0" step="0.5" inputmode="decimal" placeholder="kg" aria-label="Gewicht set ${i+1}" data-field="kg" data-index="${i}" value="${esc(s.kg)}"><input type="number" min="0" step="1" inputmode="numeric" placeholder="reps" aria-label="Herhalingen set ${i+1}" data-field="reps" data-index="${i}" value="${esc(s.reps)}"><button class="remove" data-remove="${i}" title="Verwijder set" aria-label="Verwijder set">×</button></div>`).join("")}</div>
+ <div class="actions"><button class="secondary" id="addSet">+ Set toevoegen</button><button class="secondary" id="clearSets">Leegmaken</button></div>
+ <div class="note-card"><div class="note-title">🐼 Jouw notities bij deze oefening</div><textarea id="exerciseNotes" maxlength="1500" placeholder="Bijv. Vandaag ging de oefening niet zo goed omdat mijn armen verzuurd waren door gisteren te trainen...">${esc(e.notes||"")}</textarea><div class="note-status" id="noteStatus">💗 Wordt automatisch opgeslagen</div></div>
+ <div class="savebar">${canEditLast&&!editingSessionId?`<button class="secondary subtle-edit-button" id="editLastSession">✏️ Laatste training bewerken</button>`:""}<button class="primary" id="saveSession">${editingSessionId?"Wijzigingen opslaan":"Oefening opslaan"}</button></div><div class="toast" id="toast" aria-live="polite"></div>
+ <div class="history"><h3>Trainingsgeschiedenis</h3>${sessions.length?sessions.map(s=>`<div class="history-item"><div class="history-date"><span>${esc(formatDate(s.date))}<span class="tag">${s.sets.length} sets</span></span><span>${Math.round(volume(s.sets)).toLocaleString("nl-BE")} kg volume</span></div><div class="history-detail">${s.sets.map((x,i)=>`Set ${i+1}: ${esc(x.kg)} kg × ${esc(x.reps)}`).join("　·　")}</div></div>`).join(""):'<p class="muted" style="font-size:13px">Je opgeslagen trainingen verschijnen hier.</p>'}</div>${renderProgressCharts(sessions)}`;
+ bindRestTimer();
+ if(editingSessionId&&editingSessionDate){$("sessionDate").value=editingSessionDate;}else if(savedDraft?.date){$("sessionDate").value=savedDraft.date;}
+ const editLastButton=$("editLastSession");if(editLastButton)editLastButton.onclick=()=>{const target=[...data.sessions].sort((a,b)=>(b.savedAt||0)-(a.savedAt||0))[0];if(!target||target.exerciseId!==e.id)return;editingSessionId=target.savedAt;editingSessionDate=target.date;draft=target.sets.map(x=>({kg:String(x.kg),reps:String(x.reps)}));renderWorkout();window.scrollTo({top:0,behavior:"smooth"})};
+ $("backToExercises").onclick=()=>{detailOpen=false;editingSessionId=null;editingSessionDate=null;$("appLayout").classList.remove("detail-mode");renderWorkout();window.scrollTo({top:0,behavior:"smooth"})};
+ $("deleteExercise").onclick=()=>{if(confirm(`Oefening "${e.name}" en de bijbehorende geschiedenis verwijderen?`)){data.exercises=data.exercises.filter(x=>x.id!==e.id);data.sessions=data.sessions.filter(s=>s.exerciseId!==e.id);selectedId=data.exercises[0]?.id||null;draft=[];detailOpen=false;$("appLayout").classList.remove("detail-mode");persist();updateCoins();renderList();renderWorkout()}};
+ $("sets").querySelectorAll("input").forEach(inp=>inp.addEventListener("input",()=>{draft[Number(inp.dataset.index)][inp.dataset.field]=inp.value;storeWorkoutDraft()}));
+ $("sessionDate").addEventListener("input",storeWorkoutDraft);
+ $("sets").querySelectorAll("[data-remove]").forEach(btn=>btn.addEventListener("click",()=>{if(draft.length<=1){alert("Laat minstens één set staan.");return}draft.splice(Number(btn.dataset.remove),1);storeWorkoutDraft();renderWorkout()}));
+ $("addSet").onclick=()=>{draft.push({kg:"",reps:""});storeWorkoutDraft();renderWorkout();const inputs=$("sets").querySelectorAll("input");inputs[inputs.length-2]?.focus()};
+ $("clearSets").onclick=()=>{draft=[{kg:"",reps:""},{kg:"",reps:""},{kg:"",reps:""}];storeWorkoutDraft();renderWorkout()};
+ $("exerciseNotes").addEventListener("input",()=>{e.notes=$("exerciseNotes").value;persist();$("noteStatus").textContent="✓ Notities opgeslagen — volgende keer staan ze hier weer 💗"});
+ $("saveSession").onclick=()=>{
+   const sets=draft.map(s=>({kg:String(s.kg).trim(),reps:String(s.reps).trim()}));
+   if(sets.some(s=>s.kg===""||s.reps==="")){$("toast").textContent="Vul voor elke set zowel gewicht als reps in.";return}
+   if(sets.some(s=>Number(s.kg)<0||Number(s.reps)<0||!Number.isFinite(Number(s.kg))||!Number.isFinite(Number(s.reps)))){$("toast").textContent="Gebruik geldige, positieve getallen.";return}
+   const date=$("sessionDate").value;if(!date){$("toast").textContent="Kies een datum.";return}
+   if(editingSessionId){const index=data.sessions.findIndex(s=>s.savedAt===editingSessionId&&s.exerciseId===e.id);if(index<0){$("toast").textContent="Deze training kan niet meer worden bewerkt.";editingSessionId=null;editingSessionDate=null;return}data.sessions[index]={...data.sessions[index],date,sets};data.calendarHiddenWorkoutDates=(data.calendarHiddenWorkoutDates||[]).filter(d=>d!==date);persist();clearWorkoutDraft(e.id);editingSessionId=null;editingSessionDate=null;draft=[];renderWorkout();renderList();const toast=$("toast");if(toast)toast.textContent="✓ Laatste training aangepast.";}else{data.sessions.push({exerciseId:e.id,date,sets,savedAt:Date.now()});data.calendarHiddenWorkoutDates=(data.calendarHiddenWorkoutDates||[]).filter(d=>d!==date);data.coins=(Number(data.coins)||0)+1;persist();clearWorkoutDraft(e.id);updateCoins();renderShop();draft=[];renderWorkout();renderMotivator();const toast=$("toast");if(toast)toast.textContent="🐼 +1 muntje verdiend! Goed bezig!";}
+ };
+}
+$("search").addEventListener("input",renderList);
+$("addExercise").onclick=()=>{const name=$("newExercise").value.trim();if(!name){$("newExercise").focus();return}if(data.exercises.some(e=>e.name.toLowerCase()===name.toLowerCase())){alert("Deze oefening bestaat al.");return}const e={id:"e"+Date.now(),name,group:$("newGroup").value};data.exercises.push(e);selectedId=e.id;draft=[];detailOpen=true;$("appLayout").classList.add("detail-mode");$("newExercise").value="";$("search").value="";persist();renderList();renderWorkout();switchTab("exercises")};
+document.querySelectorAll(".tab-btn").forEach(b=>b.addEventListener("click",()=>switchTab(b.dataset.tab)));$("openSettings").onclick=()=>switchTab("settings");const motivatorBanner=document.querySelector(".motivator-banner");if(motivatorBanner){motivatorBanner.setAttribute("role","button");motivatorBanner.setAttribute("tabindex","0");motivatorBanner.setAttribute("aria-label","Open de trainingskalender");motivatorBanner.addEventListener("click",()=>switchTab("calendar"));motivatorBanner.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();switchTab("calendar")}})}
+renderList();renderWorkout();updateCoins();renderShop();renderMotivator();
+// Voorkom pinch/dubbel-tik-zoom in browsers die deze gebaren aanbieden.
+document.addEventListener("gesturestart",e=>e.preventDefault(),{passive:false});
+document.addEventListener("gesturechange",e=>e.preventDefault(),{passive:false});
+document.addEventListener("gestureend",e=>e.preventDefault(),{passive:false});
+let lastTouchEnd=0;document.addEventListener("touchend",e=>{const now=Date.now();if(now-lastTouchEnd<=300)e.preventDefault();lastTouchEnd=now;},{passive:false});
+</script>
+<script>if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) { window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {})); }</script>
+<div class="character-preview" id="characterPreview" role="dialog" aria-modal="true" aria-label="Panda bekijken" aria-hidden="true"><button class="character-preview-close" id="closeCharacterPreview" type="button">Sluiten ✕</button><img id="characterPreviewImage" alt="Panda-karakter vergroot"></div>
+<script>$("closeCharacterPreview").addEventListener("click",closeCharacterPreview);$("characterPreview").addEventListener("click",e=>{if(e.target.id==="characterPreview")closeCharacterPreview()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCharacterPreview()});</script>
+</body>
+</html>

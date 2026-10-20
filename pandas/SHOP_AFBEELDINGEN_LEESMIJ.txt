@@ -1,0 +1,25 @@
+PANDA SHOP-AFBEELDINGEN TOEVOEGEN
+
+De app is volledig aanwezig. De PNG-afbeeldingen die in de Panda Shop worden gebruikt, zijn bewust weggelaten zodat je ze zelf kunt toevoegen.
+
+Plaats je eigen PNG-afbeeldingen rechtstreeks in deze map (pandas/) met exact deze bestandsnamen:
+
+ power.png       - Panda Power
+ ninja.png       - Ninja Panda
+ rockstar.png    - Rockstar Panda
+ chef.png        - Chef Panda
+ pirate.png      - Piraat Panda
+ astronaut.png   - Ruimte Panda
+ samurai.png     - Samurai Panda
+ beach.png       - Beach Panda
+ wizard.png      - Tovenaar Panda
+ golden.png      - Gouden Panda
+ gamer.png       - Gamer Panda
+ cyber.png       - Cyber Panda
+ dragon.png      - Draak Panda
+ shadow.png      - Schaduw Panda
+ legend.png      - Legendarische Panda
+
+Aanbevolen afbeelding: PNG, vierkant, 512 x 512 pixels, bij voorkeur met transparante achtergrond. Gebruik exact de bestandsnamen hierboven.
+
+De bestaande SVG-bestanden in deze map zijn behouden omdat ze worden gebruikt voor de grote motivator-afbeelding op het tabblad Oefeningen. De shop gebruikt PNG-bestanden. Als een PNG ontbreekt, toont de shop tijdelijk een panda-emoji als placeholder.

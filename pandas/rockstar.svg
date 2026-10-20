@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-label="Rockstar Panda">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff69b4"/><stop offset=".55" stop-color="#d62989"/><stop offset="1" stop-color="#30102f"/></linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="#fff5fc" stop-opacity=".8"/><stop offset="1" stop-color="#fff5fc" stop-opacity="0"/></radialGradient>
+<linearGradient id="fur" x1="0" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#fffaff"/><stop offset=".55" stop-color="#f5dce9"/><stop offset="1" stop-color="#d99dbb"/></linearGradient>
+<linearGradient id="pink" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8bd1"/><stop offset="1" stop-color="#f02d9b"/></linearGradient>
+<linearGradient id="black" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#302033"/><stop offset="1" stop-color="#080711"/></linearGradient>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#09030f" flood-opacity=".8"/></filter>
+</defs><rect width="320" height="320" rx="36" fill="url(#bg)"/><circle cx="75" cy="70" r="110" fill="url(#glow)"/><circle cx="260" cy="240" r="110" fill="url(#glow)"/>
+<g fill="#fff" opacity=".9"><path d="M45 93l5 12 12 5-12 5-5 12-5-12-12-5 12-5z"/><path d="M270 82l4 9 9 4-9 4-4 9-4-9-9-4 9-4z"/></g>
+<ellipse cx="160" cy="265" rx="105" ry="22" fill="#140817" opacity=".48"/>
+<g filter="url(#shadow)" stroke="#100b18" stroke-width="7" stroke-linejoin="round">
+<path d="M106 195 Q79 194 65 168 L52 144 Q46 126 61 119 Q74 113 83 132 L104 151 L121 170Z" fill="url(#black)"/><path d="M211 192 Q240 185 252 158 L265 137 Q276 124 286 137 Q295 149 283 165 L265 190 Q249 211 220 215Z" fill="url(#fur)"/>
+<path d="M109 194 Q132 178 160 182 Q190 178 211 194 L224 249 Q192 266 160 263 Q128 266 96 249Z" fill="url(#black)"/><path d="M120 199 Q160 187 200 199 L195 233 L160 248 L125 233Z" fill="url(#pink)"/><path d="M140 209l20 12 20-12" fill="none" stroke="#ffe4f5" stroke-width="4"/>
+<!-- guitar --> <path d="M216 185 Q233 173 244 187 Q252 199 242 210 Q230 223 215 213 Q204 204 216 185Z" fill="#5c173f" stroke="#ff8bd1" stroke-width="5"/><path d="M234 190 L274 126 L285 133 L246 199Z" fill="#ff8bd1" stroke="#100b18" stroke-width="5"/><path d="M267 135l13-22 11 7-13 22" fill="#ffc7e8" stroke="#100b18" stroke-width="4"/><path d="M222 191l20 17 M226 186l20 17 M231 181l20 17" stroke="#fff1fa" stroke-width="2"/>
+</g><!-- panda head and ears -->
+<g stroke="#100b18" stroke-width="7" stroke-linejoin="round" filter="url(#shadow)">
+<circle cx="105" cy="73" r="31" fill="url(#black)"/><circle cx="215" cy="73" r="31" fill="url(#black)"/>
+<circle cx="105" cy="73" r="15" fill="#e6a8c8" stroke-width="3"/><circle cx="215" cy="73" r="15" fill="#e6a8c8" stroke-width="3"/>
+<path d="M73 139 Q65 94 102 74 Q160 45 218 74 Q255 94 247 139 L239 169 Q220 203 160 205 Q100 203 81 169Z" fill="url(#fur)"/>
+<ellipse cx="119" cy="132" rx="29" ry="36" fill="#17101d" stroke-width="3" transform="rotate(18 119 132)"/><ellipse cx="201" cy="132" rx="29" ry="36" fill="#17101d" stroke-width="3" transform="rotate(-18 201 132)"/>
+<ellipse cx="119" cy="132" rx="14" ry="20" fill="#080711" stroke="none"/><ellipse cx="201" cy="132" rx="14" ry="20" fill="#080711" stroke="none"/>
+<ellipse cx="124" cy="125" rx="5" ry="7" fill="#fff" stroke="none"/><ellipse cx="206" cy="125" rx="5" ry="7" fill="#fff" stroke="none"/>
+<ellipse cx="160" cy="155" rx="39" ry="29" fill="#fff2f8" stroke-width="3"/><path d="M149 147 Q160 137 171 147 Q169 158 160 160 Q151 158 149 147Z" fill="#100b18" stroke="none"/><path d="M160 160 Q151 174 140 166 M160 160 Q169 174 180 166" fill="none" stroke-width="4"/>
+</g><path d="M87 96 L91 70 L110 82 L126 54 L143 78 L160 47 L176 77 L194 55 L207 81 L231 68 L236 98 Q160 80 87 98Z" fill="url(#pink)" stroke="#100b18" stroke-width="6"/><path d="M100 88l10-11 9 7 12-17 10 14 19-22 14 22 13-14 8 15 13-5" fill="none" stroke="#ffc7e8" stroke-width="4"/><path d="M87 116 Q160 96 233 116" fill="none" stroke="#fff" stroke-width="3" opacity=".65"/><rect x="12" y="12" width="296" height="296" rx="30" fill="none" stroke="#ffd8f0" stroke-opacity=".8" stroke-width="3"/><rect x="19" y="267" width="282" height="37" rx="14" fill="#170a20" fill-opacity=".88"/><text x="160" y="292" font-size="18" font-weight="800" fill="#fff3fb" text-anchor="middle" font-family="system-ui,sans-serif">Rockstar Panda</text></svg>

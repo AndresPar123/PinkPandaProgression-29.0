@@ -1,0 +1,16 @@
+MOTIVATIEPANDA-AFBEELDINGEN
+
+Plaats hier je eigen afbeeldingen voor het motivatievak op het tabblad Oefeningen.
+Gebruik PNG-bestanden en exact de bestandsnamen hieronder.
+
+Voorbeelden:
+  power.png
+  ninja.png
+  rockstar.png
+
+De naam moet overeenkomen met de panda-ID in de shop. Je kunt de PNG die je al voor de shop gebruikt kopiëren naar deze map en dezelfde naam geven.
+Aanbevolen: vierkante PNG, ongeveer 512 x 512 pixels, liefst met transparante achtergrond.
+
+Als een bestand ontbreekt, wordt er geen afbeelding getoond in het motivatievak; de rest van de app blijft werken.
+
+Upload deze map en de bestanden erin naar de map pandas/motivator/ in je GitHub-repository.
